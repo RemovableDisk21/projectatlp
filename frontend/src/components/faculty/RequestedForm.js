@@ -25,8 +25,6 @@ function ViewFaculty(props) {
         e.preventDefault();
 
         const thisClicked = e.currentTarget;
-        // const student_id = props.match.params.id;
-        // const data = studentInput;
         console.log(id);
         const data = {
             status: "accepted",
@@ -77,6 +75,8 @@ function ViewFaculty(props) {
                     <td>{item.name}</td>
                     <td>{item.student_id}</td>
                     <td>{item.subject_code}</td>
+                    <td>{item.semester}</td>
+                    <td>{item.school_year}</td>
                     <td>{item.status}</td>
 
                     <td className='text-center'>
@@ -110,7 +110,9 @@ function ViewFaculty(props) {
                                             <th>Name</th>
                                             <th>Student ID</th>
                                             <th>Subject Code</th>
-                                            <th>Action</th>
+                                            <th>Semester/Trimester/Summer</th>
+                                            <th>School Year</th>
+                                            <th>Actions</th>
                                             <th className='text-center'>Action</th>
 
                                         </tr>

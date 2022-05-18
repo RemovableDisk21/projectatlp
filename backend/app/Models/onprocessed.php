@@ -20,6 +20,7 @@ class onprocessed extends Model
         'e-sign_faculty',
         'e-sign_admin',
         'grades',
+        'remarks',
         'status',
 
     ];

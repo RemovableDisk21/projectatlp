@@ -339,6 +339,7 @@ class AuthController extends Controller
                     'reason'=> $faculty->reason,
                     'status'=>$request->status,
                     'grades'=>$request->facultyInput,
+                    'remarks'=>$request->remarks,
 
 
             ]);

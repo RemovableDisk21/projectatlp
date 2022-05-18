@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('e-sign_admin')->nullable();
             $table->string('status');
             $table->string('grades');
+            $table->string('remarks');
             $table->timestamps();
         });
     }
