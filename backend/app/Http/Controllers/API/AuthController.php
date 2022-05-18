@@ -32,7 +32,7 @@ class AuthController extends Controller
         }
         else
         {
-            $user = User::create([ //eto sa table
+            $user = User::create([ //student register
                 'name'=> $request->name,
                 'student_id'=> $request->student_id,
                 'email'=> $request->email,
@@ -41,10 +41,11 @@ class AuthController extends Controller
 
             ]);
 
-            $profile = Profile::create([ //eto sa table
+            $profile = Profile::create([ //student profile
                 'name'=>$user->name,
                 'userid'=> $user->id,
                 'student_id'=> $user->student_id,
+                'employee_id'=> $user->employee_id,
                  'number'=> '',
                  'course'=>'',
                  'year'=>'',
@@ -83,7 +84,7 @@ class AuthController extends Controller
         }
         else
         {
-            $user = User::create([ //eto sa table
+            $user = User::create([ //faculty register
                 'name'=> $request->name,
                 'employee_id'=> $request->employee_id,
                 'role'=>'faculty',
@@ -92,12 +93,25 @@ class AuthController extends Controller
                 'password'=>Hash::make($request->password),
 
             ]);
-        //$token = $user->createToken($user->email.'_Token')->plainTextToken;
+
+            $profile = Profile::create([ //Faculty profile
+                'name'=>$user->name,
+                'userid'=> $user->id,
+                'student_id'=> $user->student_id,
+                'employee_id'=> $user->employee_id,
+                 'number'=> '',
+                 'course'=>'',
+                 'year'=>'',
+                 'section'=>'',
+                'email'=>$user->email,
+
+
+            ]);
          return response()->json([
             'status'=>200,
             'username'=>$user->name,
             'role'=>$user->role,
-            //'token'=>$token,
+
             'message'=>'Registered Successfully'
         ]);
     }
@@ -183,6 +197,7 @@ class AuthController extends Controller
                     'name'=>$faculty->name,
                     'userid'=> $faculty->id,
                     'student_id'=>$faculty->student_id,
+                    'employee_id'=>$faculty->employee_id,
                      'civil'=> '',
                      'nationality'=>'',
                      'number'=> '',

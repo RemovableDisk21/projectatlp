@@ -40,6 +40,7 @@ class ProfileController extends Controller
                  'course'=> $request->course,
                  'year'=> $request->year,
                 'student_id'=> $request->student_id,
+                'employee_id'=> $request->employee_id,
                 'email'=> $request->email,
                 'section'=> $request->section,
 
