@@ -1,0 +1,93 @@
+.faculty-profile {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    font-family: 'PT Serif';
+    font-style: normal;
+}
+
+.fp-container-one  {
+    position: absolute;
+    width: 100%;
+    left: -25%;
+}
+
+/* Form */
+.fp-container-two {
+    color: #763435;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.fp-container-two .fp-form {
+    position: absolute;
+    width: 740px;
+    height: 325px;
+    left: 41%;
+    margin-top: 160px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 21px;
+}
+
+.fp-div #btn-update {
+    font-family: 'PT Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    width: 140px;
+    height: 32px;
+    background: #763435;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 136px;
+}
+
+.fp-div input {
+    width: 300px;
+    height: 35px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.fp-div input, 
+.fp-div label {
+    display: inline-block;
+}
+
+.fp-div label {
+    width: 30%;
+    text-align: right;
+    font-weight: bold;
+}
+
+.fp-field {
+    margin: 0 0px 25px 15px;
+    padding-left: 13px;
+}
+
+.fp-btn {
+    margin-left: 18rem;
+}
+
+.fp-div #fp-label-id {
+    margin-top: 35px;
+}
+
+.fp-div input::placeholder {
+    font-family: 'PT Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    text-indent: 10px;
+    color: #ABABAB;
+}

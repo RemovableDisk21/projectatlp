@@ -1,0 +1,126 @@
+/* Container */
+.fr-container-one {
+    box-sizing: border-box;
+    position: absolute;
+    top: 1%;
+    left: -10%;
+    width: 100%;
+    height: auto;
+}
+
+.fr-line {
+    position: absolute;
+    width: 1048px;
+    left: 29%;
+    margin-top: 10px;
+    border: 1px solid #763435;
+}
+
+.fr-title {
+    font-family: 'PT Serif';
+    font-style: normal;
+    color: #763435;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fr-title #title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 38px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 1.8rem;
+}
+
+.fr-title li {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+}
+
+/* Table */
+
+.fr-container-two {
+    font-family: 'PT Serif';
+    font-style: normal;
+    position: absolute;
+    margin-left: 24rem;
+    width: 71%;
+}
+
+.fr-table {
+    margin-top: 2rem;
+    margin-right: -6.7rem;
+    text-align: center;
+}
+
+.fr-table th {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 26px;
+    color: #FFFFFF;
+}
+
+.fr-table td {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000000;
+}
+
+.fr-table table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.fr-table table {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+}
+
+.fr-table table th {
+    height: 10px;
+    padding: 10px;
+    background: #763435;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.fr-table table td {
+    height: 40px;
+    border-bottom: 1px solid #000000;
+}
+
+.fr-table input[type=file] {
+    display: none;
+}
+
+.fr-table .fr-file {
+    width: 74px;
+    height: 26px;
+    padding: 2px;
+    
+    border-radius: 10px;
+    background: #DADADA;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+}
+
+.fr-table table td .fr-submit{
+    font-family: 'PT Serif';
+    font-style: normal;
+    font-size: 13px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    width: 62px;
+    height: 26px;
+    background: #763435;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
