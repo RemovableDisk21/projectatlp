@@ -81,7 +81,7 @@ function ViewFaculty(props) {
                 <tr key={index}>
                     <td>{item.name}</td>
                     <td>{item.student_id}</td>
-                    <td>{item.faculty_name}</td>
+                    <td>{item.faculty}</td>
                     <td>{item.subject_code}</td>
                     <td>{item.semester}</td>
                     <td>{item.school_year}</td>
