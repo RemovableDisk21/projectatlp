@@ -11,7 +11,7 @@ class onprocessed extends Model
     protected $fillable = [
         'name',
         'student_id',
-        'faculty_name',
+        'faculty',
         'subject_code',
         'semester',
         'school_year',

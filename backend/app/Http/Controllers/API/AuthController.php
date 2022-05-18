@@ -332,7 +332,7 @@ class AuthController extends Controller
             $profile = onprocessed::create([ //eto sa table
                     'name'=>$faculty->name,
                     'student_id'=>$faculty->student_id,
-                    'faculty_name'=>$faculty->faculty,
+                    'faculty'=>$faculty->faculty,
                     'subject_code'=> $faculty->subject_code,
                     'semester'=> $faculty->semester,
                     'school_year'=> $faculty->school_year,
