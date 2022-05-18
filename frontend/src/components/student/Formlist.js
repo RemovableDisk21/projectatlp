@@ -87,6 +87,7 @@ function ViewFaculty(props) {
                     <td>{item.school_year}</td>
                     <td>{item.reason}</td>
                     <td>{item.grades}</td>
+                    <td>{item.remarks}</td>
                     <td>{item.status}</td>
 
                 </tr>
@@ -102,7 +103,8 @@ function ViewFaculty(props) {
                     <td>{item.semester}</td>
                     <td>{item.school_year}</td>
                     <td>{item.reason}</td>
-                    <td></td>
+                    <td>{item.grades}</td>
+                    <td>{item.remarks}</td>
                     <td>{item.status}</td>
 
                 </tr>
@@ -136,6 +138,7 @@ function ViewFaculty(props) {
                                             <th>School Year</th>
                                             <th>Reason for Incomplete</th>
                                             <th>Grade</th>
+                                            <th>Remarks</th>
                                             <th>Status</th>
 
 
