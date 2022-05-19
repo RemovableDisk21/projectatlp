@@ -55,9 +55,11 @@
 
 /* Table */
 .fr-container-two {
-    color: #763435;
-    font-weight: 400;
-    font-size: 16px;
+    font-family: 'PT Serif';
+    font-style: normal;
+    position: absolute;
+    width: 90%;
+    margin:auto 5%;
 }
 
 .fr-table {
@@ -80,7 +82,7 @@
 }
 
 .fr-table table, th, td {
-
+    border: 1px solid black;
     border-collapse: collapse;
 }
 
