@@ -45,7 +45,7 @@ function Logins()
             
             <Navbar />
             <div className="container">
-            <div className="row justify-content-center">
+            <div className="justify-content-center-cont">
                 <div className="col-md-6">
                     <div className="card" class="login_container">
                         <h4 class="login_head">ADMIN LOGIN</h4>

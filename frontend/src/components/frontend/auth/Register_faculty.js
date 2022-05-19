@@ -54,7 +54,7 @@ function Registers()
             
         <Navbar />
         <div className="container">
-            <div className="row justify-content-center">
+            <div className="justify-content-center-cont-reg">
                 <div className="col-md-6">
                 <div class="reminder-container-register">
                         <h3>Reminder:</h3>
