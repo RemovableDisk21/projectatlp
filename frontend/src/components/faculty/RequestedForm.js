@@ -115,7 +115,7 @@ function ViewFaculty(props) {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default ViewFaculty;

@@ -1,5 +1,5 @@
 /* Container */
-.fr-container-one {
+.fa-container-one {
     box-sizing: border-box;
     position: absolute;
     top: 1%;
@@ -8,7 +8,7 @@
     height: auto;
 }
 
-.fr-line {
+.fa-line {
     position: absolute;
     width: 1048px;
     left: 29%;
@@ -16,7 +16,7 @@
     border: 1px solid #763435;
 }
 
-.fr-title {
+.fa-title {
     font-family: 'PT Serif';
     font-style: normal;
     display: flex;
@@ -25,7 +25,7 @@
     color: #FFFFFF;
 }
 
-.fr-title #title {
+.fa-title #title {
     font-weight: 700;
     font-size: 40px;
     line-height: 38px;
@@ -33,7 +33,7 @@
     margin-top: 1.8rem;
 }
 
-.fr-title li {
+.fa-title li {
     display: flex;
     align-items: center;
     text-align: center;
@@ -41,7 +41,7 @@
 }
 
 /* Table */
-.fr-container-two {
+.fa-container-two {
     font-family: 'PT Serif';
     font-style: normal;
     position: absolute;
@@ -49,62 +49,57 @@
     width: 71%;
 }
 
-.fr-table {
+.fa-table {
     margin-top: 2rem;
     margin-right: -6.7rem;
     text-align: center;
 }
 
-.fr-table th {
+.fa-table th {
     font-weight: 700;
     font-size: 16px;
     line-height: 26px;
     color: #FFFFFF;
 }
 
-.fr-table td {
+.fa-table td {
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
     color: #000000;
 }
 
-.fr-table table, th, td {
+.fa-table table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
 
-.fr-table table {
+.fa-table table {
     width: 100%;
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.8);
     box-sizing: border-box;
 }
 
-.fr-table table th {
+.fa-table table th {
     height: 10px;
     padding: 10px;
     background: #763435;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.fr-table table td {
+.fa-table table td {
     height: 40px;
     border-bottom: 1px solid #000000;
 }
 
-.text-center .btn-confirm {
+.fa-remarks {
+    width: 70px;
+    height: 32px;
+    padding: 2px;
+    border-radius: 6px;
+    background: #DADADA;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    padding: 5px;
-    box-sizing: border-box;
-}
-
-.text-center .btn-decline {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    padding: 5px;
-    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
 }

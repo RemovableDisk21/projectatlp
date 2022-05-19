@@ -44,7 +44,7 @@ function Profile() {
                     title: 'Profile Updated',
                     showConfirmButton: false,
                     timer: 1500
-                  })
+                })
             }
 
             else {
@@ -55,6 +55,11 @@ function Profile() {
     return (
         <div className="faculty-profile">
             <div className="fp-container-one">
+                <div className="fp-title">
+                    <ul>
+                        <li className="fp-info" id="title">Faculty Profile</li>
+                    </ul>
+                </div>
                 <div className="fp-container-two">
                     <form onSubmit={dashboardSubmit}>
                         <div className="fp-form">
@@ -64,7 +69,7 @@ function Profile() {
                             </div>
                             <div className="fp-div">
                                 <label className="fp-label">Employee no:</label>
-                                <input className="fp-field" type="text" name="employee_id" onChange={handleInput} value={dashboardInput.employee_id} readOnly />
+                                <input className="fp-field" type="text" name="employee_id" onChange={handleInput} value={dashboardInput.employee_id} disabled readOnly />
                             </div>
                             <div className="fp-div">
                                 <label className="fp-label">Contact no:</label>
@@ -72,7 +77,7 @@ function Profile() {
                             </div>
                             <div className="fp-div">
                                 <label className="fp-label">Email Address:</label>
-                                <input className="fp-field" type="email" name="email" onChange={handleInput} value={dashboardInput.email} readOnly />
+                                <input className="fp-field" type="email" name="email" onChange={handleInput} value={dashboardInput.email} disabled readOnly />
                             </div>
                             <div className="fp-div">
                                 <input className="fp-btn" type="submit" value="Update Profile" id="btn-update" />
