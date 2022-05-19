@@ -51,10 +51,10 @@ const history = useHistory();
 
 
     return(
-        <div>
+        <div class="peep">
             
         <Navbar />
-        <div className="container py-5">
+        <div className="container">
             <div className="row justify-content-center">
                 <div className="col-md-6">
                     <div class="reminder-container-register">
@@ -91,8 +91,8 @@ semester, the request of the student for completion will be automatically “exp
                                 <div className="form-group mb-3">
                                     <button type="submit"className="btn btn-primary">Register</button>
                                 </div>
-                                <Link className="nav-link login" to="/login">Already have a account? Click here</Link>
-                                <Link className="nav-link student" to="/register_faculty">Not a Student? Register here</Link>
+                                <Link className="nav-link login" to="/login">Already have an account? Click here</Link>
+                                <Link className="nav-link student" to="/register_faculty">Register as Faculty</Link>
                             </form>
                         </div>
                     </div>

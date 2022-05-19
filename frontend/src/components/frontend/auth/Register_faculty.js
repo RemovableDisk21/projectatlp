@@ -53,7 +53,7 @@ function Registers()
         <div>
             
         <Navbar />
-        <div className="container py-5">
+        <div className="container">
             <div className="row justify-content-center">
                 <div className="col-md-6">
                 <div class="reminder-container-register">
@@ -90,7 +90,7 @@ semester, the request of the student for completion will be automatically “exp
                                     <button type="submit"className="btn btn-primary">Register</button>
                                 </div>
                                 <Link className="nav-link login" to="/login">Already have a account? Click here</Link>
-                                <Link className="nav-link student" to="/register">Not a Faculty? Register here</Link>
+                                <Link className="nav-link student" to="/register">Register as Student</Link>
                             </form>
                         </div>
                     </div>
