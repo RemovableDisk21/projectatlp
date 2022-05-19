@@ -10,7 +10,7 @@ function Request() {
     const [subject_code, setSubjectCode] = useState(""); //handleInput
     const [semester, setSemester] = useState(""); //handleInput
     const [school_year, setSchoolYear] = useState(""); //handleInput
-
+    const [global_file, setFile] = useState(""); //handleInput
     useEffect(() => {
         const id = localStorage.getItem("auth_id");
         axios.get(`/api/getprofile/${id}`).then(res => {
@@ -35,7 +35,19 @@ function Request() {
         e.preventDefault();
         setFaculty(e.target.value);
     }
-
+    const handleImage = (e) => {
+        e.preventDefault();
+        let file = e.target.files[0];
+        let newFile = "";
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+            console.log("sample", reader.result);
+            newFile = reader.result;
+        })
+        reader.readAsDataURL(file);
+        setFile(newFile);
+        console.log(global_file);
+    }
     const dashboardSubmit = (e) => {
         e.preventDefault();
         const data = {
@@ -47,7 +59,6 @@ function Request() {
             school_year: school_year,
             reason: dashboardInput.reason,
             cys: `${dashboardInput.course}/${dashboardInput.year}${dashboardInput.section}`,
-            hello: dashboardInput.hello,
         }
 
         const id = localStorage.getItem("auth_id");
@@ -119,7 +130,7 @@ function Request() {
                             </div>
                             <div className="sr-div">
                                 <label className="sr-label">E-Signature:</label>
-                                <input type="file" id="formFile" name="hello" class="form-control" onChange={handleInput} value={dashboardInput.hello} />
+                                <input type="file" id="esig" name="esig" class="form-control" onChange={handleImage} />
                             </div>
                             <div className="sr-div">
                                 <input className="sr-btn" type="submit" value="Request" id="btn-req" />
@@ -127,8 +138,8 @@ function Request() {
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }
 
