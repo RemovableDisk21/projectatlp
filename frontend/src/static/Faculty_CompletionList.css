@@ -1,0 +1,117 @@
+/* Container */
+.faculty-approved{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    font-style: normal;
+    margin-top:20px;
+    width: 100%;
+    height: 100%;
+}
+.fa-container-one {
+    justify-content: center;
+    box-sizing: border-box;
+    top: 1%;
+    left: -10%;
+    width: 100%;
+    height: 100%;
+}
+
+.fa-line {
+    width: 95%;
+    padding: 0 10%;
+    margin-top: 10px;
+    margin: auto 2.5%;
+    border: 0.5px solid #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    justify-content: center;
+    text-align: center;
+}
+
+.fa-title {
+    font-family: 'PT Serif';
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+}
+
+.fa-title #title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 38px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 1.8rem;
+}
+
+.fa-title li {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+}
+
+/* Table */
+.fa-container-two {
+    font-family: 'PT Serif';
+    font-style: normal;
+    position: absolute;
+    width: 90%;
+    margin:auto 5%;
+}
+
+.fa-table {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.fa-table th {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 26px;
+    color: #FFFFFF;
+}
+
+.fa-table td {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000000;
+}
+
+.fa-table table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.fa-table table {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #5f292a;
+    box-sizing: border-box;
+}
+
+.fa-table table th {
+    height: 10px;
+    padding: 10px;
+    background: #763435;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.fa-table table td {
+    height: 40px;
+    border-bottom: 1px solid #000000;
+}
+
+.fa-remarks {
+    width: 70px;
+    height: 32px;
+    padding: 2px;
+    border-radius: 6px;
+    background: #DADADA;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+}
