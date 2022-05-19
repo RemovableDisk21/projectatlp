@@ -46,8 +46,8 @@ function ViewFaculty(props) {
         axios.delete(`/api/delete-students/${id}`).then(res => {
             if (res.data.status === 200) {
                 swal(
-                    'Good job!',
-                    'Request Accepted!',
+                    'Success!',
+                    'Request accepted',
                     'success'
                 )
                 thisClicked.closest("tr").remove();

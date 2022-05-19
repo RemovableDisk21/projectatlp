@@ -67,7 +67,7 @@ function Dashboard() {
                                 <input className="sp-field" type="text" name="name" placeholder="Juan C. Dela Cruz" onChange={profile_inputs} value={profile_data.name} />
                             </div>
                             <div className="sp-div">
-                                <label className="sp-label">Student no:</label>
+                                <label className="sp-label">Student No:</label>
                                 <input className="sp-field" type="text" name="employee_id" onChange={profile_inputs} value={profile_data.student_id} disabled readOnly />
                             </div>
                             <div className="sp-div">
