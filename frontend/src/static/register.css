@@ -56,3 +56,8 @@
 .nav-link.login:hover{
   color: #fccdcd !important;
 }
+@media (max-width:1024px){
+  .justify-content-center-cont{
+    margin: 5% auto;
+  }
+}

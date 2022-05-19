@@ -64,7 +64,7 @@ function Login()
         <div class="peep">
             <Navbar />
             <div className="container">
-            <div className="row justify-content-center">
+            <div className="justify-content-center-cont">
 
                 <div className="col-md-6">
                     <div className="card" class="login_container">

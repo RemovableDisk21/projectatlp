@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import "../../static/Student_Request.css";
 
 function Request() {
@@ -54,11 +53,13 @@ function Request() {
         const id = localStorage.getItem("auth_id");
         axios.post(`/api/requestform`, data).then(res => {
             if (res.data.status === 200) {
-                swal(
-                    'Good job!',
-                    'Request Sent Contact your Faculty Externally!',
-                    'success'
-                )
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Request Sent',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
             else {
                 setRegister({ ...dashboardInput, error_list: res.data.validation_error });
