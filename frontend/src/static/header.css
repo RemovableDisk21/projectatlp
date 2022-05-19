@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+*{
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'PT Serif', serif !important;
+  text-decoration: none;
+}
+#navbarrers{
+  height: 77px;
+  left: 0%;
+  right: 0%;
+  top: calc(50% - 77px/2 - 2126px);
+  background-color: #763435 !important;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
+  padding:0 10%;
+}
+.container-fluid{
+  height: fit-content;
+}
+.brand-container{
+  width: fit-content;
+  height: fit-content;
+  display:flex;
+  flex-direction:column;
+}
+.logo-container{
+  display:flex;
+  flex-direction:row;
+}
+.bulsu-logo{
+  width: 112px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.cict-logo{
+  margin-left:-20px;
+  margin-right:20px;
+  width: 65px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+#bulsu-brand{
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.college-brand{
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.nav-link-menu{
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-decoration: none !important;
+  margin-left: 20px;
+}
+.nav-link-menu:hover{
+  color: #fccdcd !important;
+}
