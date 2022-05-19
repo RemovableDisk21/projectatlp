@@ -24,7 +24,7 @@ function ViewFaculty() {
         // setGrades(e.target.value);
     }
 
-    const update = (e, id, name, student_id, faculty, reason) => {
+    const update = (e, id, name, student_id, faculty, reason, cys) => {
         e.preventDefault();
         const thisClicked = e.currentTarget;
         var remarks = "";
@@ -44,6 +44,7 @@ function ViewFaculty() {
             student_id: student_id,
             reason: reason,
             status: "onprocess",
+            cys: cys,
             grades_value: grades_value,
             remarks: remarks,
         }
@@ -114,7 +115,7 @@ function ViewFaculty() {
                 </td>
 
                 <td>
-                    <button onClick={(e) => update(e, item.id, item.name, item.student_id, item.faculty, item.reason)} className="btn btn-success btn-sm">Send</button>
+                    <button onClick={(e) => update(e, item.id, item.name, item.student_id, item.faculty, item.reason, item.cys)} className="btn btn-success btn-sm">Send</button>
                 </td>
             </tr>
 
@@ -123,15 +124,13 @@ function ViewFaculty() {
 
     return (
         <div className="faculty-approved">
-            <div className="fa-title">
+            <div className="fa-container-one">
+                <div className="fa-title">
                     <ul>
                         <li className="fa-info" id="title">Submitted Completion List</li>
                     </ul>
-            </div>
-            <div className="fa-line"></div>
-            <div className="fa-container-one">
-                
-                
+                </div>
+                <div className="fa-line"></div>
                 <div className="fa-container-two">
                     <div className="fa-table">
                         <table>

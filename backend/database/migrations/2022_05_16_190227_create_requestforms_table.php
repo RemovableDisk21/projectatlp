@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('subject_code');
             $table->string('semester');
             $table->string('school_year');
+            $table->string('cys');
             $table->string('reason')->nullable();
             $table->string('e-signature')->nullable();
             $table->string('status');

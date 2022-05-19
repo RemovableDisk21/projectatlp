@@ -337,6 +337,7 @@ class AuthController extends Controller
                     'school_year'=> $faculty->school_year,
                     'reason'=> $faculty->reason,
                     'status'=>$request->status,
+                    'cys'=>$request->cys,
                     'grades'=>$request->grades_value,
                     'remarks'=>$request->remarks,
             ]);

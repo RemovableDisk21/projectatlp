@@ -13,7 +13,7 @@ function ViewFaculty(props) {
 
         axios.get(`/api/onprocessed`).then(res => {
             if (res.status === 200) {
-                setStudents(res.data.pending)
+                setStudents(res.data.pending);
                 setLoading(false);
             }
         });
@@ -61,12 +61,6 @@ function ViewFaculty(props) {
                     <td>{item.name}</td>
                     <td>{item.student_id}</td>
                     <td>{item.subject_code}</td>
-
-
-
-
-
-
                     <td>{item.grades}</td>
                     <td><input class="form-control" type="file" id="formFile" /></td>
 

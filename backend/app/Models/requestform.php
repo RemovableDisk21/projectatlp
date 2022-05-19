@@ -16,6 +16,7 @@ class requestform extends Model
         'semester',
         'school_year',
         'reason',
+        'cys',
         'e-signature',
         'status',
     ];

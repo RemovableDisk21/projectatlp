@@ -103,6 +103,7 @@ class AssignController extends Controller
                 'semester'=>$request->semester,
                 'school_year'=>$request->school_year,
                 'reason'=>$request->reason,
+                'cys'=>$request->cys,
                 'status'=>'pending',
                 'hello'=>$request->hello,
             ]);
@@ -145,9 +146,6 @@ class AssignController extends Controller
                     'school_year'=> $faculty->school_year,
                     'reason'=>$faculty->reason,
                     'status'=>"accepted",
-
-
-
                 ]);
                 return response()->json([
                     'status'=> 200,

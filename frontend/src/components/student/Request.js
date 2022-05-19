@@ -47,9 +47,10 @@ function Request() {
             semester: semester,
             school_year: school_year,
             reason: dashboardInput.reason,
+            cys: `${dashboardInput.course}/${dashboardInput.year}${dashboardInput.section}`,
             hello: dashboardInput.hello,
         }
-        
+
         const id = localStorage.getItem("auth_id");
         axios.post(`/api/requestform`, data).then(res => {
             if (res.data.status === 200) {
