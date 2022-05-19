@@ -1,0 +1,121 @@
+.student-profile {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    font-family: 'PT Serif';
+    font-style: normal;
+}
+
+.sp-container-one  {
+    position: absolute;
+    width: 100%;
+    left: -25%;
+}
+
+.sp-title {
+    font-family: 'PT Serif';
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    margin-left: 48%;
+}
+
+.sp-title #title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 38px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 1.2rem;
+}
+
+.sp-title li {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+}
+
+/* Form */
+.sp-container-two {
+    color: #763435;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.sp-container-two .sp-form {
+    position: absolute;
+    width: 740px;
+    height: 490px;
+    left: 41%;
+    margin-top: 10px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 21px;
+}
+
+.sp-div #btn-update {
+    font-family: 'PT Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    width: 140px;
+    height: 32px;
+    background: #763435;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 136px;
+}
+
+.sp-div input {
+    width: 300px;
+    height: 35px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.sp-div input, 
+.sp-div label {
+    display: inline-block;
+}
+
+.sp-div label {
+    width: 30%;
+    text-align: right;
+    font-weight: bold;
+}
+
+.sp-field {
+    margin: 0 0px 25px 15px;
+    padding-left: 13px;
+}
+
+.sp-btn {
+    margin-left: 18rem;
+}
+
+.sp-div #sp-label-id {
+    margin-top: 25px;
+}
+
+.sp-div input::placeholder {
+    font-family: 'PT Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    text-indent: 10px;
+    color: #ABABAB;
+}
+
+.sp-div input[readOnly]{
+    background: #DADADA;
+}
