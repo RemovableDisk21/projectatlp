@@ -329,7 +329,7 @@ class AuthController extends Controller
         {
             $faculty->status = $request-> status;
             $faculty->update();
-            $profile = onprocessed::create([ //eto sa table
+            $profile = onprocessed::create([ // Processing Request
                     'name'=>$faculty->name,
                     'student_id'=>$faculty->student_id,
                     'faculty'=>$faculty->faculty,

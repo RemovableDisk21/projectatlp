@@ -21,7 +21,7 @@ function ViewFaculty() {
         e.persist();
         e.preventDefault();
 
-        setGrades(e.target.value);
+        // setGrades(e.target.value);
     }
 
     const update = (e, id, name, student_id, faculty, reason) => {
@@ -97,7 +97,7 @@ function ViewFaculty() {
                 </td>
                 <td>
                     <div class="input-group mb-3">
-                        <select id='remarks' name={`remarks_${item.id}`} className="fa-remarks" value={grades_value} onChange={handleinput} aria-label="Default select example">
+                        <select id='remarks' name={`remarks_${item.id}`} className="fa-remarks" value={grades_value} onChange={(e) => setGrades(e.target.value)} aria-label="Default select example">
                             <option value={'0'} disabled selected>Grades</option>
                             <option name={"grade100"} value={"1.00"}>{"1.00"}</option>
                             <option name={"grade125"} value={"1.25"}>{"1.25"}</option>
