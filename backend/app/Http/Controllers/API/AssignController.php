@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\assignfaculty;
-use App\Models\remarks;
 use App\Models\requestform;
 
 class AssignController extends Controller
@@ -192,17 +191,6 @@ class AssignController extends Controller
             return response()->json([
                 'status'=> 200,
                 'accepted'=>$accepted,
-            ]);
-        }
-
-
-        public function assignremarks()
-        {
-            $subjects = remarks::all();
-            return response()->json([
-                'status'=> 200,
-                'subject'=>$subjects,
-
             ]);
         }
 }

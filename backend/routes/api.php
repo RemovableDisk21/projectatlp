@@ -2,9 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\AuthController; 
-use App\Http\Controllers\API\ProfileController; 
-use App\Http\Controllers\API\AssignController; 
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\ProfileController;
+use App\Http\Controllers\API\AssignController;
 
 
 
@@ -16,7 +16,6 @@ Route::get('faculties',[AuthController::class, 'Faculties']);
 Route::get('subjectcode',[AuthController::class, 'Subjectcode']);
 
 Route::get('assignfac',[AssignController::class, 'AssignFac']);
-Route::get('assignremarks',[AssignController::class, 'assignremarks']);
 Route::get('requestprof',[AssignController::class, 'requesprof']);
 Route::post('profile',[AuthController::class, 'profile']);
 
