@@ -144,6 +144,7 @@ class AssignController extends Controller
                     'subject_code'=> $faculty->subject_code,
                     'semester'=> $faculty->semester,
                     'school_year'=> $faculty->school_year,
+                    'cys'=> $faculty->cys,
                     'reason'=>$faculty->reason,
                     'status'=>"accepted",
                 ]);
