@@ -65,11 +65,11 @@ function Profile() {
                                 <input className="fp-field" type="text" name="name" placeholder="Juan C. Dela Cruz" onChange={handleInput} value={dashboardInput.name} />
                             </div>
                             <div className="fp-div">
-                                <label className="fp-label">Employee no:</label>
+                                <label className="fp-label">Employee No:</label>
                                 <input className="fp-field" type="text" name="employee_id" onChange={handleInput} value={dashboardInput.employee_id} disabled readOnly />
                             </div>
                             <div className="fp-div">
-                                <label className="fp-label">Contact no:</label>
+                                <label className="fp-label">Contact No:</label>
                                 <input className="fp-field" type="tel" name="number" maxLength="11" placeholder="0123 456 7890" onChange={handleInput} value={dashboardInput.number} />
                             </div>
                             <div className="fp-div">
