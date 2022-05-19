@@ -169,13 +169,10 @@ class ProfileController extends Controller
     {
         $validator = Validator::make($request ->all(),[
             'name'=>'required',
+            'course'=>'required',
+            'year'=>'required',
+            'section'=>'required',
             'number'=>'required',
-             'course'=>'required',
-             'year'=>'required',
-             'section'=>'required',
-
-
-
         ]);
 
         if($validator->fails())
@@ -189,11 +186,11 @@ class ProfileController extends Controller
         {
             $profile = Profile::find($id);
             $profile->name= $request->name;
+            $profile->email= $request->email;
+            $profile->course= $request->course;
+            $profile->year= $request->year;
+            $profile->section= $request->section;
             $profile->number= $request->number;
-             $profile->email= $request->email;
-             $profile->course= $request->course;
-             $profile->year= $request->year;
-             $profile->section= $request->section;
             $profile->update();
 
          return response()->json([

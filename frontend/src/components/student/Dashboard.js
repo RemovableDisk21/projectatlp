@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import "../../static/Student_Profile.css";
 
 function Dashboard() {
-    const [profile_updates, setUpdates] = useState([]);
+    const [profile_data, setUpdates] = useState([]);
 
     useEffect(() => {
         const id = localStorage.getItem("auth_id");
@@ -17,21 +16,21 @@ function Dashboard() {
 
     }, []);
 
-    const handleInput = (e) => {
+    const profile_inputs = (e) => {
         e.persist();
-        setUpdates({ ...profile_updates, [e.target.name]: e.target.value });
+        setUpdates({ ...profile_data, [e.target.name]: e.target.value });
     }
 
     const dashboardSubmit = (e) => {
         e.preventDefault();
         const data = {
-            name: profile_updates.name,
-            student_id: profile_updates.student_id,
-            course: profile_updates.course,
-            year: profile_updates.year,
-            section: profile_updates.section,
-            number: profile_updates.number,
-            email: profile_updates.email,
+            name: profile_data.name,
+            student_id: profile_data.student_id,
+            course: profile_data.course,
+            year: profile_data.year,
+            section: profile_data.section,
+            number: profile_data.number,
+            email: profile_data.email,
         }
 
         const id = localStorage.getItem("auth_id");
@@ -46,7 +45,7 @@ function Dashboard() {
                 })
             }
             else {
-                setUpdates({ ...profile_updates, error_list: res.data.validation_error });
+                setUpdates({ ...profile_data, error_list: res.data.validation_error });
             }
         });
 
@@ -65,31 +64,31 @@ function Dashboard() {
                         <div className="sp-form">
                             <div className="sp-div">
                                 <label className="sp-label" id="sp-label-id" >Fullname:</label>
-                                <input className="sp-field" type="text" name="name" placeholder="Juan C. Dela Cruz" onChange={handleInput} value={profile_data.name} />
+                                <input className="sp-field" type="text" name="name" placeholder="Juan C. Dela Cruz" onChange={profile_inputs} value={profile_data.name} />
                             </div>
                             <div className="sp-div">
                                 <label className="sp-label">Student no:</label>
-                                <input className="sp-field" type="text" name="employee_id" onChange={handleInput} value={profile_data.student_id} disabled readOnly />
+                                <input className="sp-field" type="text" name="employee_id" onChange={profile_inputs} value={profile_data.student_id} disabled readOnly />
                             </div>
                             <div className="sp-div">
                                 <label className="sp-label">Course:</label>
-                                <input className="sp-field" type="text" name="course" onChange={handleInput} value={profile_data.course} />
+                                <input className="sp-field" type="text" name="course" onChange={profile_inputs} value={profile_data.course} />
                             </div>
                             <div className="sp-div">
                                 <label className="sp-label">Year:</label>
-                                <input className="sp-field" type="text" name="year" onChange={handleInput} value={profile_data.year} />
+                                <input className="sp-field" type="text" name="year" onChange={profile_inputs} value={profile_data.year} />
                             </div>
                             <div className="sp-div">
                                 <label className="sp-label">Section:</label>
-                                <input className="sp-field" type="text" name="section" onChange={handleInput} value={profile_data.section} />
+                                <input className="sp-field" type="text" name="section" onChange={profile_inputs} value={profile_data.section} />
                             </div>
                             <div className="sp-div">
                                 <label className="sp-label">Contact no:</label>
-                                <input className="sp-field" type="tel" name="number" maxLength="11" onChange={handleInput} value={profile_data.number} />
+                                <input className="sp-field" type="tel" name="number" maxLength="11" onChange={profile_inputs} value={profile_data.number} />
                             </div>
                             <div className="sp-div">
                                 <label className="sp-label">Email Address:</label>
-                                <input className="sp-field" type="email" name="email" onChange={handleInput} value={profile_data.email} disabled readOnly />
+                                <input className="sp-field" type="email" name="email" onChange={profile_inputs} value={profile_data.email} disabled readOnly />
                             </div>
                             <div className="sp-div">
                                 <input className="sp-btn" type="submit" value="Update Profile" id="btn-update" />
