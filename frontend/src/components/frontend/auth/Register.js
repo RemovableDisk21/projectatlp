@@ -4,6 +4,7 @@ import Navbar from "../../../layouts/frontend/Navbar";
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 import swal from 'sweetalert';
+import '../../../static/register.css';
 function Register()
 
 {
@@ -56,29 +57,32 @@ const history = useHistory();
         <div className="container py-5">
             <div className="row justify-content-center">
                 <div className="col-md-6">
-                    <div className="card">
-                        <div className="card-header">
-                            <h4>Register</h4>
-                        </div>
+                    <div class="reminder-container-register">
+                        <h3>Reminder:</h3>
+                        <p>When the time of completion exceeds one
+semester, the request of the student for completion will be automatically “expired” and will be archived.</p>
+                    </div>
+                    <div className="card" class="register_container">
+                        <h4 class="reg_head">STUDENT REGISTER</h4>
                         <div className="card-body">
                             <form onSubmit={registerSubmit}>
                                 <div className="form-group mb-3">
-                                    <label>Full Name:</label>
+                                    <label class="labelers">Full Name:</label>
                                     <input type ="" name ="name" onChange={handleInput} value = {registerInput.name} className = "form-control"  />
                                     <span>{registerInput.error_list.name}</span>
                                 </div>
                                 <div className="form-group mb-3">
-                                    <label>Student ID:</label>
+                                    <label class="labelers">Student ID:</label>
                                     <input type ="" name ="student_id" onChange={handleInput} value = {registerInput.student_id} className = "form-control" />
                                     <span>{registerInput.error_list.student_id}</span>
                                 </div>
                                 <div className="form-group mb-3">
-                                    <label>Email Address:</label>
+                                    <label class="labelers">Email Address:</label>
                                     <input type =" " name ="email" onChange={handleInput} value = {registerInput.email} className = "form-control"  />
                                     <span>{registerInput.error_list.email}</span>
                                 </div>
                                 <div className="form-group mb-3">
-                                    <label>Password:</label>
+                                    <label class="labelers">Password:</label>
                                     <input type ="password" name ="password" onChange={handleInput} value = {registerInput.password} className = "form-control"  />
                                     <span>{registerInput.error_list.password}</span>
                                 </div>
@@ -87,8 +91,8 @@ const history = useHistory();
                                 <div className="form-group mb-3">
                                     <button type="submit"className="btn btn-primary">Register</button>
                                 </div>
-                                <Link className="nav-link" to="/login">Already have a account? Click here</Link>
-                                <Link className="nav-link" to="/register_faculty">Not a Student? Register here</Link>
+                                <Link className="nav-link login" to="/login">Already have a account? Click here</Link>
+                                <Link className="nav-link student" to="/register_faculty">Not a Student? Register here</Link>
                             </form>
                         </div>
                     </div>

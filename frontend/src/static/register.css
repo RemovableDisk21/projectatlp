@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+*{
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'PT Serif', serif !important;
+}
+.reminder-container-register{
+  align-items: center;
+  text-align: right;
+  margin-right: 100px;
+  margin-top: 20%;
+  width:50%;
+  height: fit-content;
+  right: 379px;
+  top: calc(50% - 53px/2 - 117.5px);
+  color: #FFFFFF !important;
+}
+.register_container{
+  padding: 40px 50px;
+  width: 50%;
+  height: fit-content;
+  margin-top:3%;
+  background: rgba(133, 65, 66, 0.9);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 64px;
+  display:flex;
+  flex-direction: column;
+}
+.reg_head{
+  margin-top:2%;
+  padding-bottom:15px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 53px;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: none;
+  text-align: center;
+}
+.reminder-container-register h3{
+  font-weight: 700;
+}
+.reminder-container-register p{
+  font-size: 1.2rem;
+}
+.nav-link.login,
+.nav-link.student{
+  color: #FFFFFF !important;
+  text-align: center;
+}
+.nav-link.student:hover,
+.nav-link.login:hover{
+  color: #fccdcd !important;
+}
