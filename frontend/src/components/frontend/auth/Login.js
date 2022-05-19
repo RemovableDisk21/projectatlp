@@ -61,9 +61,9 @@ function Login()
     }
 
     return (
-        <div>
+        <div class="peep">
             <Navbar />
-            <div className="container py-5">
+            <div className="container">
             <div className="row justify-content-center">
 
                 <div className="col-md-6">
@@ -84,7 +84,7 @@ function Login()
                                 <div className="form-group mb-3">
                                     <button type="submit"className="btn btn-primary">Login</button>
                                 </div>
-                                <Link className="nav-link admin" to="/login_admin">Login as Administrator? Click here</Link>
+                                <Link className="nav-link admin" to="/login_admin">Login as Administrator</Link>
                             </form>
                         </div>
                     </div>
