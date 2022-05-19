@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\onprocessed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\profile;
 use App\Models\user_faculty;
@@ -198,7 +199,7 @@ class AuthController extends Controller
                     'userid'=> $faculty->id,
                     'student_id'=>$faculty->student_id,
                     'employee_id'=>$faculty->employee_id,
-                     'number'=> '',
+                    'number'=> '',
                     'email'=>$faculty->email,
 
 
@@ -325,7 +326,7 @@ class AuthController extends Controller
         $faculty = requestform::find($id);
         if($faculty)
         {
-            $faculty->status = $request-> status;
+            $faculty->status = $request->status;
             $faculty->update();
             $profile = onprocessed::create([ // Processing Request
                     'name'=>$faculty->name,
@@ -338,8 +339,6 @@ class AuthController extends Controller
                     'status'=>$request->status,
                     'grades'=>$request->grades_value,
                     'remarks'=>$request->remarks,
-
-
             ]);
             return response()->json([
                 'status'=> 200,
@@ -381,19 +380,14 @@ class AuthController extends Controller
         $faculty = onprocessed::find($id);
         if($faculty)
         {
-            $faculty->status = $request-> status;
+            $faculty->status = $request->status;
             $faculty->update();
-            $profile = onprocessed::update([ //eto sa table
-                    'status'=>$request->status,
-
-
-
-
-            ]);
+            $faculty->update( //Admin update status
+                    array('status'=>$request->status,)
+            );
             return response()->json([
                 'status'=> 200,
                 'message'=>"Faculty Accepted",
-
 
             ]);
         }

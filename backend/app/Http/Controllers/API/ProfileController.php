@@ -37,8 +37,8 @@ class ProfileController extends Controller
             $profile = Profile::create([ //eto sa table
                 'name'=> $request->name,
                 'number'=> $request->number,
-                 'course'=> $request->course,
-                 'year'=> $request->year,
+                'course'=> $request->course,
+                'year'=> $request->year,
                 'student_id'=> $request->student_id,
                 'employee_id'=> $request->employee_id,
                 'email'=> $request->email,
@@ -60,7 +60,7 @@ class ProfileController extends Controller
     {
         $validator = Validator::make($request ->all(),[
             'name'=>'required',
-             'number'=>'required',
+            'number'=>'required',
 
 
 
@@ -84,7 +84,7 @@ class ProfileController extends Controller
          return response()->json([
             'status'=>200,
             'username'=>$profile->name,
-            'message'=>'Registered Successfully'
+            'message'=>'Registered Successfully',
         ]);
         }
 
