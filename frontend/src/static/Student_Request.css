@@ -1,4 +1,4 @@
-.faculty-profile {
+.student-request {
     display: flex;
     flex-direction: row;
     position: relative;
@@ -6,13 +6,13 @@
     font-style: normal;
 }
 
-.fp-container-one  {
+.sr-container-one  {
     position: absolute;
     width: 100%;
-    left: -25%;
+    left: -27%;
 }
 
-.fp-title {
+.sr-title {
     font-family: 'PT Serif';
     font-style: normal;
     display: flex;
@@ -22,7 +22,7 @@
     margin-left: 48%;
 }
 
-.fp-title #title {
+.sr-title #title {
     font-weight: 700;
     font-size: 40px;
     line-height: 38px;
@@ -30,7 +30,7 @@
     margin-top: 1.2rem;
 }
 
-.fp-title li {
+.sr-title li {
     display: flex;
     align-items: center;
     text-align: center;
@@ -38,18 +38,18 @@
 }
 
 /* Form */
-.fp-container-two {
+.sr-container-two {
     color: #763435;
     font-weight: 400;
     font-size: 16px;
 }
 
-.fp-container-two .fp-form {
+.sr-container-two .sr-form {
     position: absolute;
-    width: 740px;
-    height: 325px;
-    left: 41%;
-    margin-top: 70px;
+    width: 800px;
+    height: 550px;
+    left: 39%;
+    margin-top: 10px;
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
@@ -57,7 +57,67 @@
     border-radius: 21px;
 }
 
-.fp-div #btn-update {
+.sr-div input {
+    width: 430px;
+    height: 35px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.sr-div input, 
+.sr-div label,
+.sr-div select {
+    display: inline-block;
+}
+
+.sr-div label {
+    width: 35%;
+    text-align: right;
+    font-weight: bold;
+}
+
+.sr-field {
+    margin: 0 0px 25px 15px;
+    padding-left: 13px;
+}
+
+.sr-div #sr-label-id {
+    margin-top: 25px;
+}
+
+.sr-div input::placeholder {
+    font-family: 'PT Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    text-indent: 10px;
+    color: #ABABAB;
+}
+
+.sr-select {
+    width: 430px;
+    height: 35px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.sr-select {
+    margin: 0 0px 25px 15px;
+    padding-left: 13px;
+}
+
+.sr-div #formFile {
+    margin: 0 0px 25px 15px;
+    padding-left: 13px;
+}
+
+.sr-div #btn-req {
     font-family: 'PT Serif';
     font-style: normal;
     font-weight: 400;
@@ -73,50 +133,10 @@
     border-radius: 136px;
 }
 
-.fp-div input {
-    width: 300px;
-    height: 35px;
-    background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    box-sizing: border-box;
-    border-radius: 10px;
-    cursor: pointer;
+.sr-btn {
+    margin-left: 21rem;
 }
 
-.fp-div input, 
-.fp-div label {
-    display: inline-block;
-}
-
-.fp-div label {
-    width: 30%;
-    text-align: right;
-    font-weight: bold;
-}
-
-.fp-field {
-    margin: 0 0px 25px 15px;
-    padding-left: 13px;
-}
-
-.fp-btn {
-    margin-left: 18rem;
-}
-
-.fp-div #fp-label-id {
-    margin-top: 35px;
-}
-
-.fp-div input::placeholder {
-    font-family: 'PT Serif';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 19px;
-    text-indent: 10px;
-    color: #ABABAB;
-}
-
-.fp-div input[readOnly]{
+.sr-div input[readOnly]{
     background: #DADADA;
 }
