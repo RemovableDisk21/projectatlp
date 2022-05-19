@@ -123,13 +123,15 @@ function ViewFaculty() {
 
     return (
         <div className="faculty-approved">
-            <div className="fa-container-one">
-                <div className="fa-title">
+            <div className="fa-title">
                     <ul>
                         <li className="fa-info" id="title">Submitted Completion List</li>
                     </ul>
-                </div>
-                <div className="fa-line"></div>
+            </div>
+            <div className="fa-line"></div>
+            <div className="fa-container-one">
+                
+                
                 <div className="fa-container-two">
                     <div className="fa-table">
                         <table>
