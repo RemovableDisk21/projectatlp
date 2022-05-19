@@ -198,8 +198,6 @@ class AuthController extends Controller
                     'userid'=> $faculty->id,
                     'student_id'=>$faculty->student_id,
                     'employee_id'=>$faculty->employee_id,
-                     'civil'=> '',
-                     'nationality'=>'',
                      'number'=> '',
                     'email'=>$faculty->email,
 
