@@ -33,7 +33,7 @@ function ViewFaculty() {
         else {
             remarks = "FAILED";
         }
-
+        console.log(cys);
         const data = {
             id: id,
             name: name,

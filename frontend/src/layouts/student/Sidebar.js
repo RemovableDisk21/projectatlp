@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Swal from "sweetalert2";
+import icon from "../../static/images/student-icon.png";
+import "../../static/navigation.css";
 
 const Sidebar = () => {
     const history = useHistory();
@@ -28,6 +30,13 @@ const Sidebar = () => {
 
     return (
         <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sidenav-icon-container">
+                <img class="icon" src={icon}></img>
+                <div class="sidenav-log-container">
+                    <p class="log-status">Student</p>
+                </div>
+            </div>
+            
             <div className="sb-sidenav-menu">
                 <div className="nav">
                     <Link className="nav-link-side" to="/student/dashboard"><a>Profile</a></Link>
@@ -35,10 +44,6 @@ const Sidebar = () => {
                     <Link className="nav-link-side" to="/student/Formlist"><a>Requests</a></Link>
                     <Link className="nav-link-side" onClick={logoutSubmit} ><a>Logout</a></Link>
                 </div>
-            </div>
-            <div className="sb-sidenav-footer">
-                <div className="small">Logged in as:</div>
-                <p>Student</p>
             </div>
         </nav>
     );

@@ -91,18 +91,13 @@ function ViewFaculty(props) {
     }
 
     return (
-        <div>
+        <div class="outer-container">
             <br />
+            <h4 class="page-title">Pending Faculty Requests</h4>
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="card">
-                            <div className="card-header">
-                                
-                                <h4>Pending Faculty
-                                   
-                                </h4>
-                            </div>
                             <div className="card-body">
                                 
                                 <table className="table table-bordered table-striped">
