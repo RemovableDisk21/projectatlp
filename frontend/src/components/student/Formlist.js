@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 import "../../static/Student_Formlist.css";

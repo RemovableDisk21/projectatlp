@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 import "../../static/Faculty_Request.css";
@@ -32,7 +31,6 @@ function ViewFaculty(props) {
             if (res.data.status === 200) {
                 swal("Success!", res.data.message, "success")
                 thisClicked.closest("tr").remove();
-
             }
 
         });
