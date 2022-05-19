@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import "../../static/Faculty_Approved.css";
 
 function ViewFaculty() {
@@ -14,13 +13,11 @@ function ViewFaculty() {
                 setApproved(res.data.accepted)
             }
         });
-
     }, []);
 
     const handleinput = (e) => {
         e.persist();
         e.preventDefault();
-
         // setGrades(e.target.value);
     }
 
@@ -51,33 +48,14 @@ function ViewFaculty() {
 
         axios.put(`/api/updated/${id}`, data).then(res => {
             if (res.data.status === 200) {
-                swal(
-                    'Good job!',
-                    'Your work here is done!',
-                    'success'
-                )
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Request Sent',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 thisClicked.closest("tr").remove();
-            }
-        });
-
-    }
-
-    const deleteStudent = (e, id) => {
-        e.preventDefault();
-        const thisClicked = e.currentTarget;
-        thisClicked.innerText = "Deleting";
-        axios.delete(`/api/delete-faculty/${id}`).then(res => {
-            if (res.data.status === 200) {
-                swal(
-                    'Oops...',
-                    'Decline Student Request!',
-                    'error'
-                )
-                thisClicked.closest("tr").remove();
-            }
-            else if (res.data.status === 404) {
-                swal("Error", res.data.message, "error");
-                thisClicked.innerText = "Delete";
             }
         });
     }
@@ -99,7 +77,7 @@ function ViewFaculty() {
                 <td>
                     <div class="input-group mb-3">
                         <select id='remarks' name={`remarks_${item.id}`} className="fa-remarks" value={grades_value} onChange={(e) => setGrades(e.target.value)} aria-label="Default select example">
-                            <option value={'0'} disabled selected>Grades</option>
+                            <option value={'0'} selected>Grades</option>
                             <option name={"grade100"} value={"1.00"}>{"1.00"}</option>
                             <option name={"grade125"} value={"1.25"}>{"1.25"}</option>
                             <option name={"grade150"} value={"1.50"}>{"1.50"}</option>
