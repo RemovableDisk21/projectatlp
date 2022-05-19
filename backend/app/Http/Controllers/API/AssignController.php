@@ -105,7 +105,6 @@ class AssignController extends Controller
                 'reason'=>$request->reason,
                 'cys'=>$request->cys,
                 'status'=>'pending',
-                'hello'=>$request->hello,
             ]);
 
 
