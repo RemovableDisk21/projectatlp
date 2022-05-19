@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import "../../static/Faculty_Request.css";
 
 function ViewFaculty(props) {
@@ -8,7 +8,6 @@ function ViewFaculty(props) {
     const [faculty, setStudents] = useState([]);
 
     useEffect(() => {
-
         axios.get(`/api/pendingstudent`).then(res => {
             if (res.status === 200) {
                 setStudents(res.data.pending)
@@ -24,34 +23,45 @@ function ViewFaculty(props) {
         const thisClicked = e.currentTarget;
         const data = {
             status: "accepted",
-
         }
 
         axios.put(`/api/updating/${id}`, data).then(res => {
             if (res.data.status === 200) {
-                swal("Success!", res.data.message, "success")
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Request Accepted!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 thisClicked.closest("tr").remove();
             }
-
         });
     }
+
     const deleteStudent = (e, id) => {
         e.preventDefault();
-
         const thisClicked = e.currentTarget;
         thisClicked.innerText = "Deleting";
 
         axios.delete(`/api/delete-students/${id}`).then(res => {
             if (res.data.status === 200) {
-                swal(
-                    'Success!',
-                    'Request accepted',
-                    'success'
-                )
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Request Declined!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 thisClicked.closest("tr").remove();
             }
+            
             else if (res.data.status === 404) {
-                swal("Error", res.data.message, "error");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: 'Something went wrong!',
+                  })
                 thisClicked.innerText = "Delete";
             }
         });
@@ -70,7 +80,7 @@ function ViewFaculty(props) {
                 <td>{item.status}</td>
 
                 <td className='text-center'>
-                    <button onClick={(e) => update(e, item.id)} className="btn btn-success btn-sm btn-confirm">Confirm</button>
+                    <button onClick={(e) => update(e, item.id)} className="btn btn-success btn-sm btn-confirm">Accept</button>
                     &nbsp;&nbsp;&nbsp;
                     <button type="button" onClick={(e) => deleteStudent(e, item.id)} className="btn btn-danger btn-sm btn-decline">Decline</button>
                 </td>
