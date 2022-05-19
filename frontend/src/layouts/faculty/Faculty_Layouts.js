@@ -1,21 +1,21 @@
 import React from "react";
 import { Switch, Route, Redirect } from 'react-router-dom';
-import routes_faculty from "../../routes/routes_faculty";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
+import Faculty_Routes from "../../routes/Faculty_Routes";
+import Faculty_Navbar from "./Faculty_Navbar";
+import Faculty_Sidebar from "./Faculty_Sidebar";
 
-const MasterLayouts = () => {
+const FacultyLayouts = () => {
     return (
         <div className="sb-nav-fixed">
-            <Navbar />
+            <Faculty_Navbar />
             <div id="layoutSidenav">
                 <div id="layoutSidenav_nav">
-                    <Sidebar />
+                    <Faculty_Sidebar />
                 </div>
                 <div id="layoutSidenav_content">
                     <main>
                         <Switch>
-                            {routes_faculty.map((route, idx) => {
+                            {Faculty_Routes.map((route, idx) => {
                                 return (
                                     route.component && (
                                         <Route
@@ -30,7 +30,6 @@ const MasterLayouts = () => {
                                     )
                                 )
                             })}
-                            <Redirect from="faculty" to="/faculty/dashboard" />
                         </Switch>
                     </main>
                 </div>
@@ -39,4 +38,4 @@ const MasterLayouts = () => {
     );
 }
 
-export default MasterLayouts;
+export default FacultyLayouts;

@@ -16,7 +16,6 @@ function Profile() {
 
     }, []);
 
-
     const handleInput = (e) => {
         e.persist();
         setRegister({ ...dashboardInput, [e.target.name]: e.target.value });

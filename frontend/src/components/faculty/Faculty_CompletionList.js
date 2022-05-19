@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import "../../static/Faculty_Approved.css";
+import "../../static/Faculty_CompletionList.css";
 
-function ViewFaculty() {
+function CompletionList() {
     const [faculty, setApproved] = useState([]);
     const [grades_value, setGrades] = useState(""); // handle grades input
 
@@ -77,7 +77,7 @@ function ViewFaculty() {
                 <td>
                     <div class="input-group mb-3">
                         <select id='remarks' name={`remarks_${item.id}`} className="fa-remarks" value={grades_value} onChange={(e) => setGrades(e.target.value)} aria-label="Default select example">
-                            <option value={'0'} selected>Grades</option>
+                            <option value={'0'} disabled selected>Grades</option>
                             <option name={"grade100"} value={"1.00"}>{"1.00"}</option>
                             <option name={"grade125"} value={"1.25"}>{"1.25"}</option>
                             <option name={"grade150"} value={"1.50"}>{"1.50"}</option>
@@ -137,4 +137,4 @@ function ViewFaculty() {
     );
 }
 
-export default ViewFaculty;
+export default CompletionList;

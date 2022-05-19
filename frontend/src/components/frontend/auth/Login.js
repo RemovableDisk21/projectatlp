@@ -4,9 +4,8 @@ import Navbar from "../../../layouts/frontend/Navbar";
 import axios from 'axios';
 import swal from 'sweetalert';
 import '../../../static/login.css';
-function Login()
-{
 
+function Login() {
     const history = useHistory();
     const [loginInput, setLogin] = useState({
         email: '',
@@ -50,7 +49,7 @@ function Login()
                     }
                     else if (res.data.role === "faculty" && res.data.user_status == "accepted") {
                         swal("Succes", res.data.message, "success");
-                        history.push('/faculty/profile');
+                        history.push('/faculty/Profile');
                     }
                 }
                 else {
@@ -64,39 +63,39 @@ function Login()
         <div class="peep">
             <Navbar />
             <div className="container">
-            <div className="justify-content-center-cont">
+                <div className="justify-content-center-cont">
 
-                <div className="col-md-6">
-                    <div className="card" class="login_container">
-                        <h4 class="login_head">LOGIN</h4>
-                        <div className="card-body">
-                            <form onSubmit={loginSubmit}>
-                                <div className="form-group mb-3">
-                                    <label class="labelers">Email Address:</label>
-                                    <input type ="email" name ="email" onChange={handleInput} value = {loginInput.email} className = "form-control inputters" />
-                                </div>
-                                <div className="form-group mb-3">
-                                    <label class="labelers">Password:</label>
-                                    <input type ="password" name ="password" onChange={handleInput} value = {loginInput.password} className = "form-control inputters"  />
-                                </div>
-                                
+                    <div className="col-md-6">
+                        <div className="card" class="login_container">
+                            <h4 class="login_head">LOGIN</h4>
+                            <div className="card-body">
+                                <form onSubmit={loginSubmit}>
+                                    <div className="form-group mb-3">
+                                        <label class="labelers">Email Address:</label>
+                                        <input type="email" name="email" onChange={handleInput} value={loginInput.email} className="form-control inputters" />
+                                    </div>
+                                    <div className="form-group mb-3">
+                                        <label class="labelers">Password:</label>
+                                        <input type="password" name="password" onChange={handleInput} value={loginInput.password} className="form-control inputters" />
+                                    </div>
 
-                                <div className="form-group mb-3">
-                                    <button type="submit"className="btn btn-primary">Login</button>
-                                </div>
-                                <Link className="nav-link admin" to="/login_admin">Login as Administrator</Link>
-                            </form>
+
+                                    <div className="form-group mb-3">
+                                        <button type="submit" className="btn btn-primary">Login</button>
+                                    </div>
+                                    <Link className="nav-link admin" to="/login_admin">Login as Administrator</Link>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                    <div class="reminder-container">
-                        <h3>Reminder:</h3>
-                        <p>When the time of completion exceeds one
-semester, the request of the student for completion will be automatically “expired” and will be archived.</p>
+                        <div class="reminder-container">
+                            <h3>Reminder:</h3>
+                            <p>When the time of completion exceeds one
+                                semester, the request of the student for completion will be automatically “expired” and will be archived.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     )
 }
 

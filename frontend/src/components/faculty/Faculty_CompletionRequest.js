@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import "../../static/Faculty_Request.css";
+import "../../static/Faculty_CompletionRequest.css";
 
-function ViewFaculty(props) {
+function CompletionRequest(props) {
     const [loading, setLoading] = useState(true);
     const [faculty, setStudents] = useState([]);
 
@@ -17,9 +17,8 @@ function ViewFaculty(props) {
 
     }, []);
 
-    const update = (e, id) => {
+    const acceptRequest = (e, id) => {
         e.preventDefault();
-
         const thisClicked = e.currentTarget;
         const data = {
             status: "accepted",
@@ -39,7 +38,7 @@ function ViewFaculty(props) {
         });
     }
 
-    const deleteStudent = (e, id) => {
+    const declineRequest = (e, id) => {
         e.preventDefault();
         const thisClicked = e.currentTarget;
         thisClicked.innerText = "Deleting";
@@ -80,9 +79,9 @@ function ViewFaculty(props) {
                 <td>{item.status}</td>
 
                 <td className='text-center'>
-                    <button onClick={(e) => update(e, item.id)} className="btn btn-success btn-sm btn-confirm">Accept</button>
+                    <button onClick={(e) => acceptRequest(e, item.id)} className="btn btn-success btn-sm btn-confirm">Accept</button>
                     &nbsp;&nbsp;&nbsp;
-                    <button type="button" onClick={(e) => deleteStudent(e, item.id)} className="btn btn-danger btn-sm btn-decline">Decline</button>
+                    <button type="button" onClick={(e) => declineRequest(e, item.id)} className="btn btn-danger btn-sm btn-decline">Decline</button>
                 </td>
             </tr>
         );
@@ -122,4 +121,4 @@ function ViewFaculty(props) {
     );
 }
 
-export default ViewFaculty;
+export default CompletionRequest;
