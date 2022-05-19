@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Swal from 'sweetalert2';
 import jsPDF from "jspdf";
 import bulsulogo from '../../static/images/bsu.png';
 import check from '../../static/images/check.png';
@@ -126,18 +125,13 @@ function ViewFaculty(props) {
     }
 
     return (
-        <div>
+        <div class="outer-container">
             <br />
+            <h4 class="page-title">Finished Forms</h4>
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="card">
-                            <div className="card-header">
-
-                                <h4>Proccesed Form
-
-                                </h4>
-                            </div>
                             <div className="card-body">
 
                                 <table className="table table-bordered table-striped">

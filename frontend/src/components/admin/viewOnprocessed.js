@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
-import { useParams } from "react-router-dom";
+import "../../static/onprocess.css";
 function ViewFaculty(props) {
 
 
@@ -75,18 +74,13 @@ function ViewFaculty(props) {
     }
 
     return (
-        <div>
+        <div class="outer-container">
             <br />
+            <h4 class="page-title">On Process Forms</h4>
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="card">
-                            <div className="card-header">
-
-                                <h4>Proccesed Form
-
-                                </h4>
-                            </div>
                             <div className="card-body">
 
                                 <table className="table table-bordered table-striped">

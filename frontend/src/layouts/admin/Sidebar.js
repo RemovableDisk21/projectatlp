@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link , useHistory} from 'react-router-dom';
 import Swal from "sweetalert2";
+import icon from "../../static/images/admin-icon.png";
 import "../../static/navigation.css";
 
 
@@ -30,10 +31,16 @@ const Sidebar = () => {
 
     return(
         <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sidenav-icon-container">
+                <img class="icon" src={icon}></img>
+                <div class="sidenav-log-container">
+                    <p class="log-status">Administrator</p>
+                </div>
+            </div>
         <div className="sb-sidenav-menu">
             <div className="nav">
-                <Link className="nav-link-side" to="/admin/viewOnprocessed"><a>On Proccesed Form</a></Link>
-                <Link className="nav-link-side" to="/admin/viewProcessed"><a>Proccesed Form</a></Link>
+                <Link className="nav-link-side" to="/admin/viewOnprocessed"><a>On Process Forms</a></Link>
+                <Link className="nav-link-side" to="/admin/viewProcessed"><a>Finished Forms</a></Link>
                 <Link className="nav-link-side" to="/admin/viewStudent"><a>Student List</a></Link>
                 <Link className="nav-link-side" to="/admin/viewFaculties"><a>Faculty List</a></Link>
                 <Link className="nav-link-side" to="/admin/viewFaculty"><a>Pending Faculty</a></Link>
