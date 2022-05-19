@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import "../../static/Faculty_Profile.css";
 
 function Profile() {
-    const history = useHistory();
     const [dashboardInput, setRegister] = useState([]);
 
     useEffect(() => {
         const id = localStorage.getItem("auth_id");
         axios.get(`/api/getprofile/${id}`).then(res => {
             if (res.status === 200) {
-                console.log(res.data.profile);
                 setRegister(res.data.profile);
             }
         });

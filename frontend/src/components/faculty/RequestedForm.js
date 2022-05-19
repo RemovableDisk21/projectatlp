@@ -19,12 +19,10 @@ function ViewFaculty(props) {
 
     }, []);
 
-
     const update = (e, id) => {
         e.preventDefault();
 
         const thisClicked = e.currentTarget;
-        console.log(id);
         const data = {
             status: "accepted",
 
@@ -33,7 +31,6 @@ function ViewFaculty(props) {
         axios.put(`/api/updating/${id}`, data).then(res => {
             if (res.data.status === 200) {
                 swal("Success!", res.data.message, "success")
-                console.log("test");
                 thisClicked.closest("tr").remove();
 
             }
