@@ -85,13 +85,13 @@ function ViewFaculty(props) {
 
     return (
         <div className="faculty-request">
+            <div className="fr-title">
+                <ul>
+                    <li className="fr-info" id="title">Student Completion Request/s</li>
+                </ul>
+            </div>
+            <div className="fr-line"></div>
             <div className="fr-container-one">
-                <div className="fr-title">
-                    <ul>
-                        <li className="fr-info" id="title">Student Completion Request/s</li>
-                    </ul>
-                </div>
-                <div className="fr-line"></div>
                 <div className="fr-container-two">
                     <div className="fr-table">
                         <table>
@@ -106,7 +106,6 @@ function ViewFaculty(props) {
                                     <th className='text-center'>Action</th>
                                 </tr>
                             </thead>
-
                             <tbody>
                                 {faculty_HTMLTABLE}
                             </tbody>

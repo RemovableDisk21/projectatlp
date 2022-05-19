@@ -14,6 +14,38 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
   padding:0 10%;
 }
+#navbarrer{
+  display: flex;
+  flex-direction:row;
+  height: 77px;
+  background-color: #763435 !important;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
+  padding:0 10%;
+}
+.part1{
+  display: flex;
+  flex-direction:row;
+}
+.button-container{
+  display:flex;
+  flex-direction: row;
+}
+.nav-link-logout{
+  border: none !important;
+  background: none !important;
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-decoration: none !important;
+  justify-content:flex-end;
+}
 .container-fluid{
   height: fit-content;
 }
