@@ -91,15 +91,13 @@ function Login() {
                             <div className="card-body">
                                 <form onSubmit={loginSubmit}>
                                     <div className="form-group mb-3">
-                                        <label class="labelers">Email Address:</label>
+                                        <label class="labelers email">Email Address:</label>
                                         <input type="email" name="email" onChange={handleInput} value={loginInput.email} className="form-control inputters" />
                                     </div>
                                     <div className="form-group mb-3">
-                                        <label class="labelers">Password:</label>
+                                        <label class="labelers pass">Password:</label>
                                         <input type="password" name="password" onChange={handleInput} value={loginInput.password} className="form-control inputters" />
                                     </div>
-
-
                                     <div className="form-group mb-3">
                                         <button type="submit" className="btn btn-primary">Login</button>
                                     </div>

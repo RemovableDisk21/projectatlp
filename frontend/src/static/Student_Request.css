@@ -1,0 +1,150 @@
+.student-request {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    font-style: normal;
+    margin-top:20px;
+    width: 100%;
+    height: 100%;
+}
+
+.sr-container-one  {
+    justify-content: center;
+    box-sizing: border-box;
+    top: 1%;
+    left: -10%;
+    width: 100%;
+    height: 100%;
+}
+
+.sr-title {
+    font-family: 'PT Serif';
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+}
+
+.sr-title #title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 38px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 1.8npmrem;
+}
+
+.sr-title li {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+}
+
+/* Form */
+.sr-container-two {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:-2rem;
+    color: #763435;
+    font-weight: 400;
+    font-size: 16px;
+    width: 100%;
+}
+
+.sr-container-two .sr-form {
+    width: 800px;
+    height: 550px;
+    margin-top: 70px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 21px;
+}
+
+.sr-div input {
+    width: 430px;
+    height: 35px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.sr-div input, 
+.sr-div label,
+.sr-div select {
+    display: inline-block;
+}
+
+.sr-div label {
+    width: 35%;
+    text-align: right;
+    font-weight: bold;
+}
+
+.sr-field {
+    margin: 0 0px 25px 15px;
+    padding-left: 13px;
+}
+
+.sr-div #sr-label-id {
+    margin-top: 25px;
+}
+
+.sr-div input::placeholder {
+    font-family: 'PT Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    text-indent: 10px;
+    color: #ABABAB;
+}
+
+.sr-select {
+    width: 430px;
+    height: 35px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.sr-select {
+    margin: 0 0px 25px 15px;
+    padding-left: 13px;
+}
+
+.sr-div #formFile {
+    margin: 0 0px 25px 15px;
+    padding-left: 13px;
+}
+
+.sr-div #btn-req {
+    font-family: 'PT Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    width: 140px;
+    height: 32px;
+    background: #763435;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 136px;
+}
+
+.sr-btn {
+    margin-left: 21rem;
+}
+
+.sr-div input[readOnly]{
+    background: #DADADA;
+}

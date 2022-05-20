@@ -45,9 +45,26 @@
   text-decoration: none;
 }
 
+#send-btn{
+  background-image: linear-gradient(to right, #1d9e39 0%, #29b848  51%, #2bac36  100%);
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 4px 0 20px #eee;
+  border-radius: 2px;
+  padding: 5px 10px;
+  border: none;
+}
+
+#send-btn:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
 .remove-btn {
   background-image: linear-gradient(to right, #e53935 0%, #e35d5b  51%, #e53935  100%);
-  transition: 0.5s;
+  transition: 0.5s !important;
   background-size: 200% auto;
   color: white;            
   box-shadow: 4px 0 20px #eee;
@@ -61,4 +78,74 @@
   color: #fff;
   text-decoration: none;
 }
+.card{
+  background: none !important;
+  border: none !important;
+}
+.card-body table{
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #5f292a;
+  box-sizing: border-box;
+}
+.card-body table th{
+  height: 10px;
+  padding: 10px;
+  background: #763435;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  color: white;
+}
+.card-body table td{
+  background:#fff;
+}
+.card-body table, th, td {
+  border: none !important;
+  border-collapse: collapse;
+}
+.card-body tr{
+  border: 1px solid #763435 !important;
+}
 
+/* Table */
+
+.card-body {
+  text-align: center;
+}
+
+.card-body th {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 26px;
+  color: #FFFFFF;
+}
+
+.card-body td {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #000000;
+}
+
+.card-body table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.card-body table {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #5f292a;
+  box-sizing: border-box;
+}
+
+.card-body table th {
+  height: 10px;
+  padding: 10px;
+  background: #763435;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.card-body table td {
+  height: 40px;
+  border-bottom: 1px solid #000000;
+}

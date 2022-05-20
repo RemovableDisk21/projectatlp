@@ -138,7 +138,7 @@ function ViewFaculty(props) {
                         <div className="card">
                             <div className="card-body">
 
-                                <table className="table table-bordered table-striped">
+                                <table className="table admin-table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
@@ -147,7 +147,6 @@ function ViewFaculty(props) {
                                             <th>Grade</th>
                                             <th>Remarks</th>
                                             <th className='text-center'>Action</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
