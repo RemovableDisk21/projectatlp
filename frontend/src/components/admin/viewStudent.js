@@ -83,7 +83,7 @@ function ViewFaculty(props) {
                  
                     <td className='text-center'>
                         
-                        <button type="button" onClick={(e) => deleteStudent(e, item.id)} className="btn btn-danger btn-sm">Remove</button>
+                        <button id="remove-btn" type="button" onClick={(e) => deleteStudent(e, item.id)} className="btn btn-danger remove-btn btn-sm">Remove</button>
                     </td>
                 </tr>
             );

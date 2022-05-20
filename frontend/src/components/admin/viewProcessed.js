@@ -121,7 +121,7 @@ function ViewFaculty(props) {
                     <td>{item.grades}</td>
                     <td>{item.remarks}</td>
                     <td className='text-center'>
-                        <button type="button" onClick={(e) => generatePDF(e, item.name, item.reason, item.student_id, item.faculty, item.subject_code, item.semester, item.school_year, item.grades, item.cys, item.e_sign_student, item.e_sign_faculty, item.e_sign_admin, item.dean)} className="btn btn-danger btn-sm">download</button>
+                        <button id="download-btn" type="button" onClick={(e) => generatePDF(e, item.name, item.reason, item.student_id, item.faculty, item.subject_code, item.semester, item.school_year, item.grades, item.cys, item.e_sign_student, item.e_sign_faculty, item.e_sign_admin, item.dean)} className="btn download-btn download-btn btn-danger btn-sm">Download</button>
                     </td>
                 </tr>
             );
