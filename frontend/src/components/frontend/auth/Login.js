@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Navbar from "../../../layouts/frontend/Navbar";
 import axios from 'axios';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import '../../../static/login.css';
 
 function Login() {
@@ -28,7 +28,13 @@ function Login() {
         axios.get('/sanctum/csrf-cookie').then(response => {
             axios.post(`api/login`, data).then(res => {
                 if (res.data.status === 200) {
-                    swal("Succes", res.data.message, "success");
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'LOGIN SUCCESSFUL',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                     localStorage.setItem('auth_token', res.data.token);
                     localStorage.setItem('auth_name', res.data.username);
                     localStorage.setItem('auth_id', res.data.id);
@@ -36,19 +42,33 @@ function Login() {
                     localStorage.setItem('auth_status', res.data.user_status);
 
                     if (res.data.role === "faculty" && res.data.user_status == "pending") {
-                        swal(
-                            'Oops...',
-                            'Something went wrong!',
-                            'error'
-                        )
-
+                        Swal.fire({
+                            position: 'top-center',
+                            icon: 'warning',
+                            title: 'VERIFICATION REQUIRED',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
 
                     } else if (res.data.role === "student") {
-                        swal("Succes", res.data.message, "success");
-                        history.push('/student/dashboard');
+                        Swal.fire({
+                            position: 'top-center',
+                            icon: 'success',
+                            title: 'LOGIN SUCCESSFUL',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        history.push('/student/Profile');
                     }
+
                     else if (res.data.role === "faculty" && res.data.user_status == "accepted") {
-                        swal("Succes", res.data.message, "success");
+                        Swal.fire({
+                            position: 'top-center',
+                            icon: 'success',
+                            title: 'LOGIN SUCCESSFUL',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
                         history.push('/faculty/Profile');
                     }
                 }
