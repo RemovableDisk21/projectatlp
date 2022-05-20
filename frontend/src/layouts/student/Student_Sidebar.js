@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import icon from "../../static/images/student-icon.png";
 import "../../static/navigation.css";
 
-const Sidebar = () => {
+const Student_Sidebar = () => {
     const history = useHistory();
     const logoutSubmit = (e) => {
         e.preventDefault();
@@ -39,9 +39,9 @@ const Sidebar = () => {
             
             <div className="sb-sidenav-menu">
                 <div className="nav">
-                    <Link className="nav-link-side" to="/student/dashboard"><a>Profile</a></Link>
-                    <Link className="nav-link-side" to="/student/request"><a>Request Form</a></Link>
-                    <Link className="nav-link-side" to="/student/Formlist"><a>Requests</a></Link>
+                    <Link className="nav-link-side" to="/student/Profile"><a>Profile</a></Link>
+                    <Link className="nav-link-side" to="/student/RequestForm"><a>Request Form</a></Link>
+                    <Link className="nav-link-side" to="/student/RequestList"><a>Request List</a></Link>
                     <Link className="nav-link-side" onClick={logoutSubmit} ><a>Logout</a></Link>
                 </div>
             </div>
@@ -49,4 +49,4 @@ const Sidebar = () => {
     );
 }
 
-export default Sidebar;
+export default Student_Sidebar;

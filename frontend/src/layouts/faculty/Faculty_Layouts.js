@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Faculty_Routes from "../../routes/Faculty_Routes";
 import Faculty_Navbar from "./Faculty_Navbar";
 import Faculty_Sidebar from "./Faculty_Sidebar";

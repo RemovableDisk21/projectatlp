@@ -3,7 +3,7 @@ import logo1 from "../../static/images/bulsu.png";
 import logo2 from "../../static/images/cict.png";
 import "../../static/header.css";
 
-const Navbar = () => {
+const Student_Navbar = () => {
     return (
         <nav id="navbarrer" className="sb-topnav navbar navbar-expand navbarrer navbar-expand navbar-dark bg-dark">
             <div class="logo-container">
@@ -18,4 +18,4 @@ const Navbar = () => {
     );
 }
 
-export default Navbar;
+export default Student_Navbar;
