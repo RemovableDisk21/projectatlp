@@ -2,12 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Routes } from 'react-router-dom';
 import axios from 'axios';
 import Login from './components/frontend/auth/Login';
-import Logins from './components/frontend/auth/Login_admin';
+import LoginAdmin from './components/frontend/auth/Login_admin';
 import Register from './components/frontend/auth/Register';
-import Registers from './components/frontend/auth/Register_faculty';
+import RegisterFaculty from './components/frontend/auth/Register_faculty';
 import MasterLayout from './layouts/admin/MasterLayout';
 import FacultyLayouts from './layouts/faculty/Faculty_Layouts';
-import MasterLayoutss from './layouts/student/MasterLayoutss';
+import StudentLayouts from './layouts/student/Student_Layouts';
 
 axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.headers.post['Accept'] = 'application/json';
@@ -28,11 +28,11 @@ function App() {
                     <Route exact path="/" component={Login} />
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />
-                    <Route path="/register_faculty" component={Registers} />
-                    <Route path="/login_admin" component={Logins} />
+                    <Route path="/register_faculty" component={RegisterFaculty} />
+                    <Route path="/login_admin" component={LoginAdmin} />
                     <Route path="/admin" name="Admin" render={(props) => <MasterLayout {...props} />} />
                     <Route path="/faculty" name="Faculty" render={(props) => <FacultyLayouts {...props} />} />
-                    <Route path="/student" name="Student" render={(props) => <MasterLayoutss {...props} />} />
+                    <Route path="/student" name="Student" render={(props) => <StudentLayouts {...props} />} />
                 </Switch>
             </Router>
         </div>

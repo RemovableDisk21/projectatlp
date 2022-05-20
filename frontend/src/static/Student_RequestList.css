@@ -1,0 +1,106 @@
+/* Container */
+.student-formlist{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    font-style: normal;
+    margin-top:20px;
+    width: 100%;
+    height: 100%;
+}
+.sf-container-one {
+    justify-content: center;
+    box-sizing: border-box;
+    top: 1%;
+    left: -10%;
+    width: 100%;
+    height: 100%;
+}
+
+.sf-line {
+    width: 95%;
+    padding: 0 10%;
+    margin-top: 10px;
+    margin: auto 2.5%;
+    border: 0.5px solid #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    justify-content: center;
+    text-align: center;
+}
+
+.sf-title {
+    font-family: 'PT Serif';
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+}
+
+.sf-title #title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 38px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 1.8rem;
+}
+
+.sf-title li {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+}
+
+/* Table */
+.sf-container-two {
+    font-family: 'PT Serif';
+    font-style: normal;
+    position: absolute;
+    width: 90%;
+    margin:auto 5%;
+}
+
+.sf-table {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.sf-table th {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 26px;
+    color: #FFFFFF;
+}
+
+.sf-table td {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000000;
+}
+
+.sf-table table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.sf-table table {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #5f292a;
+    box-sizing: border-box;
+}
+
+.sf-table table th {
+    height: 10px;
+    padding: 10px;
+    background: #763435;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.sf-table table td {
+    height: 40px;
+    border-bottom: 1px solid #000000;
+}

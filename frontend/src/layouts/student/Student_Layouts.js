@@ -1,21 +1,21 @@
 import React from "react";
-import { Switch, Route } from 'react-router-dom';
-import Faculty_Routes from "../../routes/Faculty_Routes";
-import Faculty_Navbar from "./Faculty_Navbar";
-import Faculty_Sidebar from "./Faculty_Sidebar";
+import { Switch, Route, Redirect } from 'react-router-dom';
+import Student_Routes from '../../routes/Student_Routes';
+import Student_Navbar from "./Student_Navbar";
+import Student_Sidebar from "./Student_Sidebar";
 
-const FacultyLayouts = () => {
+const Student_Layouts = () => {
     return (
         <div className="sb-nav-fixed">
-            <Faculty_Navbar />
+            <Student_Navbar />
             <div id="layoutSidenav">
                 <div id="layoutSidenav_nav">
-                    <Faculty_Sidebar />
+                    <Student_Sidebar />
                 </div>
                 <div id="layoutSidenav_content">
                     <main>
                         <Switch>
-                            {Faculty_Routes.map((route, idx) => {
+                            {Student_Routes.map((route, idx) => {
                                 return (
                                     route.component && (
                                         <Route
@@ -38,4 +38,4 @@ const FacultyLayouts = () => {
     );
 }
 
-export default FacultyLayouts;
+export default Student_Layouts;

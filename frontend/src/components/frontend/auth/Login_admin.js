@@ -1,9 +1,10 @@
 import React, {useState} from "react";
-import Navbar from "../../../layouts/frontend/Navbar";
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
+import Navbar from "../../../layouts/frontend/Navbar";
 import '../../../static/login.css';
+
 function Logins()
 {
     const history = useHistory();
@@ -30,7 +31,13 @@ function Logins()
                 {
                     localStorage.setItem('auth_token' ,res.data.token);
                     localStorage.setItem('auth_name' ,res.data.username);
-                    swal("Succes", res.data.message,"success");
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'LOGIN SUCCESSFUL',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                     history.push('/admin/viewFaculty');
                 }
                 else
