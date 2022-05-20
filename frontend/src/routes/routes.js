@@ -1,5 +1,4 @@
 import Dashboard from "../components/admin/Dashboard";
-
 import ViewFaculties from "../components/admin/viewFaculties";
 import viewFaculty from "../components/admin/viewFaculty";
 import ViewOnprocessed from "../components/admin/viewOnprocessed";
