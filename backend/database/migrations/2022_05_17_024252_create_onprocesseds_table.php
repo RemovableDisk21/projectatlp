@@ -22,9 +22,10 @@ return new class extends Migration
             $table->string('subject_code');
             $table->string('semester');
             $table->string('school_year');
-            $table->string('e-sign_student')->nullable();
-            $table->string('e-sign_faculty')->nullable();
-            $table->string('e-sign_admin')->nullable();
+            $table->longText('e_sign_student',8000000);
+            $table->longText('e_sign_faculty',8000000);
+            $table->longText('e_sign_admin',8000000);
+            $table->string('dean');
             $table->string('status');
             $table->string('grades');
             $table->string('cys');

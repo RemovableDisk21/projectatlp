@@ -11,6 +11,7 @@ function Request() {
     const [semester, setSemester] = useState(""); //handleInput
     const [school_year, setSchoolYear] = useState(""); //handleInput
     const [global_file, setFile] = useState(""); //handleInput
+
     useEffect(() => {
         const id = localStorage.getItem("auth_id");
         axios.get(`/api/getprofile/${id}`).then(res => {
@@ -20,7 +21,7 @@ function Request() {
         });
         axios.get(`/api/faculties`).then(res => {
             if (res.status === 200) {
-                setFaculties(res.data.faculty)
+                setFaculties(res.data.faculty);
             }
         });
     }, []);
@@ -38,18 +39,16 @@ function Request() {
     const handleImage = (e) => {
         e.preventDefault();
         let file = e.target.files[0];
-        let newFile = "";
         const reader = new FileReader();
         reader.addEventListener('load', () => {
-            console.log("sample", reader.result);
-            newFile = reader.result;
+            setFile(reader.result);
+
         })
         reader.readAsDataURL(file);
-        setFile(newFile);
-        console.log(global_file);
     }
     const dashboardSubmit = (e) => {
         e.preventDefault();
+        console.log(global_file);
         const data = {
             name: dashboardInput.name,
             student_id: dashboardInput.student_id,
@@ -59,6 +58,7 @@ function Request() {
             school_year: school_year,
             reason: dashboardInput.reason,
             cys: `${dashboardInput.course}/${dashboardInput.year}${dashboardInput.section}`,
+            esig: global_file,
         }
 
         const id = localStorage.getItem("auth_id");

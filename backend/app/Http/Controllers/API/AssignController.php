@@ -105,6 +105,7 @@ class AssignController extends Controller
                 'reason'=>$request->reason,
                 'cys'=>$request->cys,
                 'status'=>'pending',
+                'e_signature'=>$request->esig,
             ]);
 
 
@@ -146,6 +147,7 @@ class AssignController extends Controller
                     'cys'=> $faculty->cys,
                     'reason'=>$faculty->reason,
                     'status'=>"accepted",
+                    'e_signature'=>$faculty->reason,
                 ]);
                 return response()->json([
                     'status'=> 200,

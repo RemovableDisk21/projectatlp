@@ -7,6 +7,8 @@ function ViewFaculty(props) {
 
     const [loading, setLoading] = useState(true);
     const [faculty, setStudents] = useState([]);
+    const [global_file, setFile] = useState("");
+    const [dean, setDean] = useState("");
 
     useEffect(() => {
 
@@ -19,6 +21,17 @@ function ViewFaculty(props) {
 
     }, []);
 
+    const handleImage = (e) => {
+        e.persist();
+        e.preventDefault();
+        let file = e.target.files[0];
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+            setFile(reader.result);
+        })
+        reader.readAsDataURL(file);
+    }
+
 
     const update = (e, id,) => {
         e.preventDefault();
@@ -29,7 +42,8 @@ function ViewFaculty(props) {
         const data = {
             id: id,
             status: "processed",
-
+            dean: dean,
+            e_sign_admin: global_file
         }
 
         axios.put(`/api/processed/${id}`, data).then(res => {
@@ -61,7 +75,8 @@ function ViewFaculty(props) {
                     <td>{item.student_id}</td>
                     <td>{item.subject_code}</td>
                     <td>{item.grades}</td>
-                    <td><input class="form-control" type="file" id="formFile" /></td>
+                    <td><input className="sr-field" type="text" name="dean" onChange={(e) => setDean(e.target.value)} value={dean} /></td>
+                    <td><input class="form-control" name="esig" type="file" id="formFile" onChange={handleImage} /></td>
 
 
                     <td className='text-center'>
@@ -91,6 +106,7 @@ function ViewFaculty(props) {
                                             <th>Student ID</th>
                                             <th>Subject Code </th>
                                             <th>Remarks</th>
+                                            <th>Dean</th>
                                             <th className='text-center'>E-Signature</th>
                                             <th className='text-center'>Action</th>
 

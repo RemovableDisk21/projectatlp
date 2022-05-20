@@ -6,22 +6,28 @@ import "../../static/Faculty_CompletionList.css";
 function CompletionList() {
     const [faculty, setApproved] = useState([]);
     const [grades_value, setGrades] = useState(""); // handle grades input
+    const [global_file, setFile] = useState("");
 
     useEffect(() => {
         axios.get(`/api/acceptedstudent`).then(res => {
             if (res.status === 200) {
-                setApproved(res.data.accepted)
+                setApproved(res.data.accepted);
             }
         });
     }, []);
 
-    const handleinput = (e) => {
+    const handleImage = (e) => {
         e.persist();
         e.preventDefault();
-        // setGrades(e.target.value);
+        let file = e.target.files[0];
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+            setFile(reader.result);
+        })
+        reader.readAsDataURL(file);
     }
 
-    const update = (e, id, name, student_id, faculty, reason, cys) => {
+    const update = (e, id, name, student_id, faculty, reason, cys, e_signature) => {
         e.preventDefault();
         const thisClicked = e.currentTarget;
         var remarks = "";
@@ -40,10 +46,12 @@ function CompletionList() {
             faculty: faculty,
             student_id: student_id,
             reason: reason,
-            status: "onprocess",
+            status: "on process",
             cys: cys,
             grades_value: grades_value,
             remarks: remarks,
+            e_sign_student: e_signature,
+            e_sign_faculty: global_file,
         }
 
         axios.put(`/api/updated/${id}`, data).then(res => {
@@ -72,7 +80,7 @@ function CompletionList() {
                 <td>{item.school_year}</td>
                 <td>{item.reason}</td>
                 <td>
-                    <input type="file" name="hello" class="form-control" id="formFile" onChange={handleinput.hello} />
+                    <input type="file" name="esig" class="form-control" id="formFile" onChange={handleImage} />
                 </td>
                 <td>
                     <div class="input-group mb-3">
@@ -93,7 +101,7 @@ function CompletionList() {
                 </td>
 
                 <td>
-                    <button onClick={(e) => update(e, item.id, item.name, item.student_id, item.faculty, item.reason, item.cys)} className="btn btn-success btn-sm">Send</button>
+                    <button onClick={(e) => update(e, item.id, item.name, item.student_id, item.faculty, item.reason, item.cys, item.e_signature)} className="btn btn-success btn-sm">Send</button>
                 </td>
             </tr>
 

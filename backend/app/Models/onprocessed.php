@@ -16,13 +16,14 @@ class onprocessed extends Model
         'semester',
         'school_year',
         'reason',
-        'e-sign_student',
-        'e-sign_faculty',
-        'e-sign_admin',
+        'e_sign_student',
+        'e_sign_faculty',
+        'e_sign_admin',
         'grades',
         'cys',
         'remarks',
         'status',
+        'dean'
 
     ];
 }

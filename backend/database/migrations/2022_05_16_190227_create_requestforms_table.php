@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('school_year');
             $table->string('cys');
             $table->string('reason')->nullable();
-            $table->string('e-signature')->nullable();
+            $table->longText('e_signature', 8000000)->nullable();
             $table->string('status');
             $table->timestamps();
         });

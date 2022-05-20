@@ -54,13 +54,13 @@ function CompletionRequest(props) {
                 })
                 thisClicked.closest("tr").remove();
             }
-            
+
             else if (res.data.status === 404) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error!',
                     text: 'Something went wrong!',
-                  })
+                })
                 thisClicked.innerText = "Delete";
             }
         });

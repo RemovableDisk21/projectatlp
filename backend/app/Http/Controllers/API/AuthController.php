@@ -340,12 +340,14 @@ class AuthController extends Controller
                     'cys'=>$request->cys,
                     'grades'=>$request->grades_value,
                     'remarks'=>$request->remarks,
+                    'e_sign_student'=> $request->e_sign_student,
+                    'e_sign_faculty'=>$request->e_sign_faculty,
+                    'e_sign_admin'=> "Hello",
+                    'dean'=> "",
             ]);
             return response()->json([
                 'status'=> 200,
                 'message'=>"Faculty Accepted",
-
-
             ]);
         }
         else
@@ -359,7 +361,7 @@ class AuthController extends Controller
 
     public function onprocessed()
     {
-        $pending = onprocessed::where("status","onprocess")->get();
+        $pending = onprocessed::where("status","on process")->get();
         return response()->json([
             'status'=> 200,
             'pending'=>$pending,
@@ -384,7 +386,12 @@ class AuthController extends Controller
             $faculty->status = $request->status;
             $faculty->update();
             $faculty->update( //Admin update status
-                    array('status'=>$request->status,)
+                    array(
+                        'status'=>$request->status,
+                        'dean'=>$request->dean,
+                        'e_sign_admin'=>$request->e_sign_admin,
+                    )
+
             );
             return response()->json([
                 'status'=> 200,
