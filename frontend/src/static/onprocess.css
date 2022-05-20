@@ -24,3 +24,41 @@
   height:fit-content;
   width:100%;
 }
+.text-center{
+  align-items: center;
+  justify-content: center;
+}
+#download-btn{
+  background-image: linear-gradient(to right, #0059ff 0%, #0084ff  51%, #0044ff  100%);
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 4px 0 20px #eee;
+  border-radius: 2px;
+  padding: 5px 10px;
+  border: none;
+}
+
+#download-btn:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.remove-btn {
+  background-image: linear-gradient(to right, #e53935 0%, #e35d5b  51%, #e53935  100%);
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 4px 0 20px #eee;
+  border-radius: 2px;
+  padding: 5px 10px;
+  border: none;
+}
+
+.remove-btn:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
