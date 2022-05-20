@@ -6,9 +6,7 @@ import '../../assets/admin/js/scripts';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import routes from "../../routes/routes"; 
 
-
 const MasterLayout = () => {
-
     return(
         <div className="sb-nav-fixed">
             <Navbar />
@@ -40,9 +38,7 @@ const MasterLayout = () => {
                         <Redirect from="admin" to="/admin/profile" />
                     </Switch>
 
-
                     </main>
-                   
 
                 </div>
             </div>
