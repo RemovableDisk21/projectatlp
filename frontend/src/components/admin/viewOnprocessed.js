@@ -81,7 +81,7 @@ function ViewFaculty(props) {
 
                     <td className='text-center'>
 
-                        <button type="button" onClick={(e) => update(e, item.id)} className="btn btn-danger btn-sm">Send</button>
+                        <button id="send-btn" type="button" onClick={(e) => update(e, item.id)} className="btn send-btn btn-danger btn-sm">Send</button>
                     </td>
                 </tr>
             );

@@ -59,17 +59,16 @@ function Logins()
                         <div className="card-body">
                             <form onSubmit={loginSubmit}>
                                 <div className="form-group mb-3">
-                                    <label class="labelers">Email Address:</label>
+                                    <label class="labelers email">Email Address:</label>
                                     <input type =" " name ="email"  onChange={handleInput} value = {loginInput.email} className = "form-control"  />
                                 </div>
                                 <div className="form-group mb-3">
-                                    <label class="labelers">Password:</label>
+                                    <label class="labelers pass">Password:</label>
                                     <input type ="password" name ="password" onChange={handleInput} value = {loginInput.password} className = "form-control"  />
                                 </div>
                                 
-
                                 <div className="form-group mb-3">
-                                    <button type="submit"className="btn btn-primary">Login</button>
+                                    <button type="submit"className="btn btn-primary login-buttoners">Login</button>
                                 </div>
                                 <Link className="nav-link admin" to="/login">Not an Administrator? Click here</Link>
                             </form>
