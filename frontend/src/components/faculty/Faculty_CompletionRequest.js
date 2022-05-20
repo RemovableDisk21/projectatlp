@@ -41,29 +41,43 @@ function CompletionRequest(props) {
     const declineRequest = (e, id) => {
         e.preventDefault();
         const thisClicked = e.currentTarget;
-        thisClicked.innerText = "Deleting";
 
-        axios.delete(`/api/delete-students/${id}`).then(res => {
-            if (res.data.status === 200) {
-                Swal.fire({
-                    position: 'top-center',
-                    icon: 'success',
-                    title: 'Request Declined!',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                thisClicked.closest("tr").remove();
-            }
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Confirm'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                thisClicked.innerText = "Deleting";
+                axios.delete(`/api/delete-students/${id}`).then(res => {
+                    if (res.data.status === 200) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success!',
+                            text: 'Request Declined',
+                            timer: 1500,
+                            showConfirmButton: false
+                        })
+                        thisClicked.closest("tr").remove();
+                    }
 
-            else if (res.data.status === 404) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error!',
-                    text: 'Something went wrong!',
-                })
-                thisClicked.innerText = "Delete";
+                    else if (res.data.status === 404) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error!',
+                            text: 'Something went wrong!',
+                        })
+                        thisClicked.innerText = "Delete";
+                    }
+                });
+                
             }
-        });
+        })
+
     }
 
     var faculty_HTMLTABLE = "";

@@ -34,7 +34,7 @@ function Logins()
                     Swal.fire({
                         position: 'top-center',
                         icon: 'success',
-                        title: 'LOGIN SUCCESSFUL',
+                        title: 'Login Successful',
                         showConfirmButton: false,
                         timer: 1500
                     })
