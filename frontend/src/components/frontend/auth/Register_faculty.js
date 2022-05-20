@@ -37,7 +37,7 @@ function Registers() {
                     Swal.fire({
                         position: 'top-center',
                         icon: 'success',
-                        title: 'REGISTER SUCCESSFUL',
+                        title: 'Register Successful',
                         showConfirmButton: false,
                         timer: 1500
                     })

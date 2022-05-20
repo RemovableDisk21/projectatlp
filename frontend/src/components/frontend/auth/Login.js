@@ -31,7 +31,7 @@ function Login() {
                     Swal.fire({
                         position: 'top-center',
                         icon: 'success',
-                        title: 'LOGIN SUCCESSFUL',
+                        title: 'Login Successful',
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -45,7 +45,7 @@ function Login() {
                         Swal.fire({
                             position: 'top-center',
                             icon: 'warning',
-                            title: 'VERIFICATION REQUIRED',
+                            title: 'Verification Required',
                             showConfirmButton: false,
                             timer: 1500
                         })
@@ -54,7 +54,7 @@ function Login() {
                         Swal.fire({
                             position: 'top-center',
                             icon: 'success',
-                            title: 'LOGIN SUCCESSFUL',
+                            title: 'Login Successful',
                             showConfirmButton: false,
                             timer: 1500
                         })
@@ -65,7 +65,7 @@ function Login() {
                         Swal.fire({
                             position: 'top-center',
                             icon: 'success',
-                            title: 'LOGIN SUCCESSFUL',
+                            title: 'Login Successful',
                             showConfirmButton: false,
                             timer: 1500
                         })
