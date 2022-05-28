@@ -10,14 +10,55 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\profile;
 use App\Models\user_faculty;
-use App\Models\subject;
+
 use App\Models\requestform;
 
 class AuthController extends Controller
 {
+
+    public function register_admin(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            'email'=>'required|email|max:191|unique:users,email',
+            'password'=>'required'
+        ]);
+
+        if($validator->fails())
+        {
+            return response()->json([
+                'registered'=>true,
+            ]);
+        }
+        else{
+            $user = User::create([ //admin register
+                'name'=> 'admin',
+                'email'=> 'admin@example.com',
+                'role'=>'admin',
+                'password'=>Hash::make('admin'),
+
+            ]);
+
+            $profile = Profile::create([ //admin
+                'name'=>"",
+                'userid'=> $user->id,
+                'email'=>$user->email,
+                'e_signature'=>"",
+
+
+            ]);
+         $token = $user->createToken($user->email.'_Token')->plainTextToken;
+         return response()->json([
+            'status'=>200,
+            'username'=>$user->name,
+            'token'=>$token,
+            'message'=>'Registered Successfully'
+        ]);
+    }
+    }
+
     public function register(Request $request)
     {
-        $validator = Validator::make($request ->all(),[
+        $validator = Validator::make($request->all(),[
             'name'=>'required|max:191',
             'student_id'=>'required',
             'email'=>'required|email|max:191|unique:users,email',
@@ -52,6 +93,7 @@ class AuthController extends Controller
                  'year'=>'',
                  'section'=>'',
                 'email'=>$user->email,
+                'e_signature'=>"",
 
 
             ]);
@@ -105,6 +147,7 @@ class AuthController extends Controller
                  'year'=>'',
                  'section'=>'',
                 'email'=>$user->email,
+                'e_signature'=>"",
 
 
             ]);
@@ -311,15 +354,6 @@ class AuthController extends Controller
             ]);
         }
 
-        public function Subjectcode()
-        {
-            $subject = subject::all();
-            return response()->json([
-                'status'=> 200,
-                'subject'=>$subject,
-            ]);
-        }
-
 
         public function updated (Request $request, $id)
     {
@@ -342,7 +376,7 @@ class AuthController extends Controller
                     'remarks'=>$request->remarks,
                     'e_sign_student'=> $request->e_sign_student,
                     'e_sign_faculty'=>$request->e_sign_faculty,
-                    'e_sign_admin'=> "Hello",
+                    'e_sign_admin'=> "",
                     'dean'=> "",
             ]);
             return response()->json([

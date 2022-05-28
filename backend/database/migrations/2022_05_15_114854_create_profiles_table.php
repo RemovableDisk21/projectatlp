@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('course')->nullable();
             $table->string('year')->nullable();
             $table->string('section')->nullable();
+            $table->longText('e_signature')->nullable();
             $table->timestamps();
         });
     }

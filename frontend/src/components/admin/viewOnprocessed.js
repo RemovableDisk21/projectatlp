@@ -7,8 +7,7 @@ function ViewFaculty(props) {
 
     const [loading, setLoading] = useState(true);
     const [faculty, setStudents] = useState([]);
-    const [global_file, setFile] = useState("");
-    const [dean, setDean] = useState("");
+    const [dean, setDean] = useState([]);
 
     useEffect(() => {
 
@@ -18,32 +17,25 @@ function ViewFaculty(props) {
                 setLoading(false);
             }
         });
+        const id = localStorage.getItem("auth_id");
+        axios.get(`/api/getprofile/${id}`).then(res => {
+            if (res.status === 200) {
+                setDean(res.data.profile);
+            }
+        });
 
     }, []);
 
-    const handleImage = (e) => {
-        e.persist();
-        e.preventDefault();
-        let file = e.target.files[0];
-        const reader = new FileReader();
-        reader.addEventListener('load', () => {
-            setFile(reader.result);
-        })
-        reader.readAsDataURL(file);
-    }
-
-
-    const update = (e, id,) => {
+    const update = (e, id) => {
         e.preventDefault();
 
         const thisClicked = e.currentTarget;
-        console.log(id);
 
         const data = {
             id: id,
             status: "processed",
-            dean: dean,
-            e_sign_admin: global_file
+            dean: dean.name,
+            e_sign_admin: dean.e_signature,
         }
 
         axios.put(`/api/processed/${id}`, data).then(res => {
@@ -70,17 +62,11 @@ function ViewFaculty(props) {
         faculty_HTMLTABLE = faculty.map((item, index) => {
             return (
                 <tr key={index}>
-                    <td>{item.id}</td>
                     <td>{item.name}</td>
                     <td>{item.student_id}</td>
                     <td>{item.subject_code}</td>
                     <td>{item.grades}</td>
-                    <td><input className="sr-field" type="text" name="dean" onChange={(e) => setDean(e.target.value)} value={dean} /></td>
-                    <td><input class="form-control" name="esig" type="file" id="formFile" onChange={handleImage} /></td>
-
-
                     <td className='text-center'>
-
                         <button id="send-btn" type="button" onClick={(e) => update(e, item.id)} className="btn send-btn btn-danger btn-sm">Send</button>
                     </td>
                 </tr>
@@ -101,15 +87,11 @@ function ViewFaculty(props) {
                                 <table className="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Name:</th>
+                                            <th>Name</th>
                                             <th>Student ID</th>
                                             <th>Subject Code </th>
                                             <th>Remarks</th>
-                                            <th>Dean</th>
-                                            <th className='text-center'>E-Signature</th>
                                             <th className='text-center'>Action</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>

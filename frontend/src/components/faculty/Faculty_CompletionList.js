@@ -6,26 +6,21 @@ import "../../static/Faculty_CompletionList.css";
 function CompletionList() {
     const [faculty, setApproved] = useState([]);
     const [grades_value, setGrades] = useState(""); // handle grades input
-    const [global_file, setFile] = useState("");
+    const [facultySignature, setSignature] = useState("");
 
     useEffect(() => {
-        axios.get(`/api/acceptedstudent`).then(res => {
+        axios.get(`/api/pendingstudent`).then(res => {
             if (res.status === 200) {
-                setApproved(res.data.accepted);
+                setApproved(res.data.pending);
+            }
+        });
+        const id = localStorage.getItem("auth_id");
+        axios.get(`/api/getprofile/${id}`).then(res => {
+            if (res.status === 200) {
+                setSignature(res.data.profile);
             }
         });
     }, []);
-
-    const handleImage = (e) => {
-        e.persist();
-        e.preventDefault();
-        let file = e.target.files[0];
-        const reader = new FileReader();
-        reader.addEventListener('load', () => {
-            setFile(reader.result);
-        })
-        reader.readAsDataURL(file);
-    }
 
     const update = (e, id, name, student_id, faculty, reason, cys, e_signature) => {
         e.preventDefault();
@@ -51,7 +46,7 @@ function CompletionList() {
             grades_value: grades_value,
             remarks: remarks,
             e_sign_student: e_signature,
-            e_sign_faculty: global_file,
+            e_sign_faculty: facultySignature.e_signature,
         }
 
         axios.put(`/api/updated/${id}`, data).then(res => {
@@ -80,9 +75,6 @@ function CompletionList() {
                 <td>{item.school_year}</td>
                 <td>{item.reason}</td>
                 <td>
-                    <input type="file" name="esig" class="form-control" id="formFile" onChange={handleImage} />
-                </td>
-                <td>
                     <div class="input-group mb-3">
                         <select id='remarks' name={`remarks_${item.id}`} className="fa-remarks" value={grades_value} onChange={(e) => setGrades(e.target.value)} aria-label="Default select example">
                             <option value={'0'} disabled selected>Grades</option>
@@ -99,7 +91,6 @@ function CompletionList() {
                         </select>
                     </div>
                 </td>
-
                 <td>
                     <button onClick={(e) => update(e, item.id, item.name, item.student_id, item.faculty, item.reason, item.cys, item.e_signature)} className="btn btn-success btn-sm">Send</button>
                 </td>
@@ -128,7 +119,6 @@ function CompletionList() {
                                     <th>Semester/Trimester/Summer</th>
                                     <th>School Year</th>
                                     <th>Reason</th>
-                                    <th>E-Signature</th>
                                     <th>Grades</th>
                                     <th>Status</th>
                                 </tr>

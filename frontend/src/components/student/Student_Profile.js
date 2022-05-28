@@ -5,7 +5,8 @@ import "../../static/Student_Profile.css";
 
 function Profile() {
     const [profile_data, setUpdates] = useState([]);
-    
+    const [e_signature, setSignature] = useState("");
+
     useEffect(() => {
         const id = localStorage.getItem("auth_id");
         axios.get(`/api/getprofile/${id}`).then(res => {
@@ -21,7 +22,7 @@ function Profile() {
         setUpdates({ ...profile_data, [e.target.name]: e.target.value });
     }
 
-    const dashboardSubmit = (e) => {
+    const updateProfile = (e) => {
         e.preventDefault();
         const data = {
             name: profile_data.name,
@@ -51,6 +52,40 @@ function Profile() {
 
     }
 
+    const handleImage = (e) => {
+        e.preventDefault();
+        let file = e.target.files[0];
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+            setSignature(reader.result);
+
+        })
+        reader.readAsDataURL(file);
+    }
+
+    const updateSignature = (e) => {
+        e.preventDefault();
+        const data = {
+            e_signature: e_signature,
+        }
+
+        const id = localStorage.getItem("auth_id");
+        axios.put(`/api/student_signature/${id}`, data).then(res => {
+            if (res.data.status === 200) {
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Signature Updated',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+            else {
+                setSignature({ e_signature, error_list: res.data.validation_error });
+            }
+        });
+    }
+
     return (
         <div className="student-profile">
             <div className="sp-container-one">
@@ -60,8 +95,8 @@ function Profile() {
                     </ul>
                 </div>
                 <div className="sp-container-two">
-                    <form onSubmit={dashboardSubmit}>
-                        <div className="sp-form">
+                    <div className="sp-form">
+                        <form onSubmit={updateProfile}>
                             <div className="sp-div">
                                 <label className="sp-label" id="sp-label-id" >Fullname:</label>
                                 <input className="sp-field" type="text" name="name" placeholder="Juan C. Dela Cruz" onChange={profile_inputs} value={profile_data.name} />
@@ -93,8 +128,17 @@ function Profile() {
                             <div className="sp-div">
                                 <input className="sp-btn" type="submit" value="Update Profile" id="btn-update" />
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                        <form onSubmit={updateSignature}>
+                            <div className="sr-div">
+                                <label className="sr-label">E-Signature:</label>
+                                <input type="file" id="esig" name="esig" class="form-control" onChange={handleImage} />
+                                <div className="sp-div">
+                                    <input className="sp-btn" type="submit" value="Update Signature" id="btn-update" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

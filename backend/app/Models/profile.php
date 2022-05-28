@@ -24,6 +24,6 @@ class profile extends Model
         'password',
         'role',
         'status',
-
+        'e_signature'
     ];
 }

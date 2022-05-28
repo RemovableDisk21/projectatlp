@@ -7,8 +7,6 @@ use App\Models\onprocessed;
 use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Models\requestform;
-use App\Models\subject;
-use App\Models\subjects;
 class ProfileController extends Controller
 {
     //
@@ -37,12 +35,13 @@ class ProfileController extends Controller
             $profile = Profile::create([ //eto sa table
                 'name'=> $request->name,
                 'number'=> $request->number,
-                'course'=> $request->course,
-                'year'=> $request->year,
                 'student_id'=> $request->student_id,
                 'employee_id'=> $request->employee_id,
                 'email'=> $request->email,
+                'course'=> $request->course,
+                'year'=> $request->year,
                 'section'=> $request->section,
+                'e_signature'=>"",
 
             ]);
 
@@ -75,7 +74,7 @@ class ProfileController extends Controller
         }
         else
         {
-            $profile = Profile::find($id);
+            $profile = Profile::where("userid",$id)->first();
             $profile->name= $request->name;
             $profile->number= $request->number;
             $profile->email= $request->email;
@@ -85,6 +84,34 @@ class ProfileController extends Controller
             'status'=>200,
             'username'=>$profile->name,
             'message'=>'Registered Successfully',
+        ]);
+        }
+
+    }
+
+    public function faculty_signature(Request $request , $id)
+    {
+        $validator = Validator::make($request ->all(),[
+            'e_signature'=>'required',
+        ]);
+
+        if($validator->fails())
+        {
+            return response()->json([
+                'validation_error'=>$validator->messages(),
+
+            ]);
+        }
+        else
+        {
+            $profile = Profile::where("userid",$id)->first();
+            $profile->e_signature= $request->e_signature;
+            $profile->update();
+
+         return response()->json([
+            'status'=>200,
+            'username'=>$profile->name,
+            'message'=>'Signature Updated',
         ]);
         }
 
@@ -100,68 +127,6 @@ class ProfileController extends Controller
             ]);
         }
 
-    }
-
-    public function subject(Request $request)
-    {
-        $validator = Validator::make($request->all(),[
-            'code'=>'required|max:191',
-            'name'=>'required|max:191',
-            'syandsem'=>'required|max:191',
-
-        ]);
-
-        if($validator->fails())
-        {
-            return response()->json([
-                'status'=> 422,
-                'validate_err'=> $validator->messages(),
-            ]);
-        }
-        else
-        {
-            $user = subject::create([ //eto sa table
-                'code'=> $request->code,
-                'name'=> $request->name,
-                'syandsem'=> $request->syandsem,
-            ]);
-            return response()->json([
-                'status'=> 200,
-                'message'=>'Student Added Successfully',
-            ]);
-        }
-
-    }
-
-    public function codes()
-    {
-        $subject = subject::all();
-        return response()->json([
-            'status'=> 200,
-            'subject'=>$subject,
-
-        ]);
-    }
-
-
-    public function deletestudent($id)
-    {
-        $student = subject::find($id);
-        if($student)
-        {
-            $student->delete();
-            return response()->json([
-                'status'=> 200,
-                'message'=>'Student Deleted Successfully',
-            ]);
-        }
-        else
-        {
-            return response()->json([
-                'status'=> 404,
-                'message' => 'No Student ID Found',
-            ]);
-        }
     }
 
 
@@ -184,7 +149,7 @@ class ProfileController extends Controller
         }
         else
         {
-            $profile = Profile::find($id);
+            $profile = Profile::where("userid",$id)->first();
             $profile->name= $request->name;
             $profile->email= $request->email;
             $profile->course= $request->course;
@@ -202,6 +167,61 @@ class ProfileController extends Controller
 
     }
 
+     public function student_signature (Request $request, $id)
+    {
+        $validator = Validator::make($request ->all(),[
+            'e_signature'=>'required',
+        ]);
+
+        if($validator->fails())
+        {
+            return response()->json([
+                'validation_error'=>$validator->messages(),
+
+            ]);
+        }
+        else
+        {
+            $profile = Profile::where("userid",$id)->first();
+            $profile->e_signature= $request->e_signature;
+            $profile->update();
+
+         return response()->json([
+            'status'=>200,
+            'username'=>$profile->name,
+            'message'=>'Signature Updated'
+        ]);
+        }
+
+    }
+     public function admin_signature (Request $request, $id)
+    {
+        $validator = Validator::make($request ->all(),[
+            'e_signature'=>'required',
+        ]);
+
+        if($validator->fails())
+        {
+            return response()->json([
+                'validation_error'=>$validator->messages(),
+
+            ]);
+        }
+        else
+        {
+            $profile = Profile::where("userid",$id)->first();
+            $profile->name = $request->dean;
+            $profile->e_signature = $request->e_signature;
+            $profile->update();
+
+         return response()->json([
+            'status'=>200,
+            'username'=>$profile->name,
+            'message'=>'Signature Updated'
+        ]);
+        }
+
+    }
 
 
     public function deletestudents($id)

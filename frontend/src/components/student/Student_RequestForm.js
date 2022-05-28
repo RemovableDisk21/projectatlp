@@ -10,7 +10,6 @@ function RequestForm() {
     const [subject_code, setSubjectCode] = useState(""); //handleInput
     const [semester, setSemester] = useState(""); //handleInput
     const [school_year, setSchoolYear] = useState(""); //handleInput
-    const [global_file, setFile] = useState(""); //handleInput
 
     useEffect(() => {
         const id = localStorage.getItem("auth_id");
@@ -36,19 +35,8 @@ function RequestForm() {
         e.preventDefault();
         setFaculty(e.target.value);
     }
-    const handleImage = (e) => {
-        e.preventDefault();
-        let file = e.target.files[0];
-        const reader = new FileReader();
-        reader.addEventListener('load', () => {
-            setFile(reader.result);
-
-        })
-        reader.readAsDataURL(file);
-    }
     const dashboardSubmit = (e) => {
         e.preventDefault();
-        console.log(global_file);
         const data = {
             name: dashboardInput.name,
             student_id: dashboardInput.student_id,
@@ -58,7 +46,7 @@ function RequestForm() {
             school_year: school_year,
             reason: dashboardInput.reason,
             cys: `${dashboardInput.course}/${dashboardInput.year}${dashboardInput.section}`,
-            esig: global_file,
+            esig: dashboardInput.e_signature,
         }
 
         const id = localStorage.getItem("auth_id");
@@ -127,10 +115,6 @@ function RequestForm() {
                             <div className="sr-div">
                                 <label className="sr-label">Reason for INCOMPLETE:</label>
                                 <input className="sr-field" type="text" name="reason" onChange={handleInput} value={dashboardInput.reason} />
-                            </div>
-                            <div className="sr-div">
-                                <label className="sr-label">E-Signature:</label>
-                                <input type="file" id="esig" name="esig" class="form-control" onChange={handleImage} />
                             </div>
                             <div className="sr-div">
                                 <input className="sr-btn" type="submit" value="Request" id="btn-req" />
