@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('grades');
             $table->string('cys');
             $table->string('remarks');
+            $table->string('student_email');
             $table->timestamps();
         });
     }

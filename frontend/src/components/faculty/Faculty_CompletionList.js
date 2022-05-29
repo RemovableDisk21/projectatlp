@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import "../../static/Faculty_CompletionList.css";
+import EmailJS, { send } from 'emailjs-com';
 
 function CompletionList() {
+    const form = useRef();
     const [faculty, setApproved] = useState([]);
     const [grades_value, setGrades] = useState(""); // handle grades input
     const [facultySignature, setSignature] = useState("");
+    const [remark, setRemark] = useState("");
 
     useEffect(() => {
         axios.get(`/api/pendingstudent`).then(res => {
@@ -21,18 +24,18 @@ function CompletionList() {
             }
         });
     }, []);
-
-    const update = (e, id, name, student_id, faculty, reason, cys, e_signature) => {
+    const update = (e, id, name, student_id, faculty, reason, cys, e_signature, student_email) => {
         e.preventDefault();
         const thisClicked = e.currentTarget;
         var remarks = "";
 
         if (parseFloat(grades_value) >= 1.00 && parseFloat(grades_value) <= 3.00) {
             remarks = "PASSED";
+            setRemark("Passed");
         }
-
         else {
             remarks = "FAILED";
+            setRemark("Failed");
         }
 
         const data = {
@@ -47,6 +50,7 @@ function CompletionList() {
             remarks: remarks,
             e_sign_student: e_signature,
             e_sign_faculty: facultySignature.e_signature,
+            student_email: student_email,
         }
 
         axios.put(`/api/updated/${id}`, data).then(res => {
@@ -58,6 +62,14 @@ function CompletionList() {
                     showConfirmButton: false,
                     timer: 1500
                 })
+                // EmailJS.sendForm(
+                //     'service_90b52vb',
+                //     'template_vmf692c',
+                //     form.current,
+                //     'gR-Bu8Ulwy3mhhNmG').then(res => {
+                //         console.log(res);
+                //     }).catch(err => console.log(err));
+
                 thisClicked.closest("tr").remove();
             }
         });
@@ -68,6 +80,7 @@ function CompletionList() {
     approved_lists = faculty.map((item, index) => {
         return (
             <tr key={index}>
+
                 <td>{item.name}</td>
                 <td>{item.student_id}</td>
                 <td>{item.subject_code}</td>
@@ -76,8 +89,8 @@ function CompletionList() {
                 <td>{item.reason}</td>
                 <td>
                     <div class="input-group mb-3">
-                        <select id='remarks' name={`remarks_${item.id}`} className="fa-remarks" value={grades_value} onChange={(e) => setGrades(e.target.value)} aria-label="Default select example">
-                            <option value={'0'} disabled selected>Grades</option>
+                        <select id='remarks' name="grades" className="fa-remarks" value={grades_value} onChange={(e) => setGrades(e.target.value)} aria-label="Default select example">
+                            <option value={'0'} selected>Grades</option>
                             <option name={"grade100"} value={"1.00"}>{"1.00"}</option>
                             <option name={"grade125"} value={"1.25"}>{"1.25"}</option>
                             <option name={"grade150"} value={"1.50"}>{"1.50"}</option>
@@ -92,7 +105,15 @@ function CompletionList() {
                     </div>
                 </td>
                 <td>
-                    <button onClick={(e) => update(e, item.id, item.name, item.student_id, item.faculty, item.reason, item.cys, item.e_signature)} className="btn btn-success btn-sm">Send</button>
+                    <form ref={form}>
+                        <input className="sr-field" type="hidden" name="to_email" value={item.student_email} />
+                        <input className="sr-field" type="hidden" name="subject_code" value={item.subject_code} />
+                        <input className="sr-field" type="hidden" name="status" value={'On Process'} />
+                        <input className="sr-field" type="hidden" name="remarks" value={remark} onChange={setRemark} />
+                        <input className="sr-field" type="hidden" name="grade" value={grades_value} onChange={setGrades} />
+                        <input className="sr-field" type="hidden" name="receiver" value={"the Office of the Dean"} />
+                    </form>
+                    <button type="submit" onClick={(e) => update(e, item.id, item.name, item.student_id, item.faculty, item.reason, item.cys, item.e_signature, item.student_email)} className="btn btn-success btn-sm">Send</button>
                 </td>
             </tr>
 

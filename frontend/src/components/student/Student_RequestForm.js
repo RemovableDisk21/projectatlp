@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import "../../static/Student_RequestForm.css";
+import EmailJS, { send } from 'emailjs-com';
 
 function RequestForm() {
     const [dashboardInput, setRegister] = useState([]);
@@ -10,12 +11,13 @@ function RequestForm() {
     const [subject_code, setSubjectCode] = useState(""); //handleInput
     const [semester, setSemester] = useState(""); //handleInput
     const [school_year, setSchoolYear] = useState(""); //handleInput
-
+    const form = useRef();
     useEffect(() => {
         const id = localStorage.getItem("auth_id");
         axios.get(`/api/getprofile/${id}`).then(res => {
             if (res.status === 200) {
                 setRegister(res.data.profile);
+                console.log(res.data.profile);
             }
         });
         axios.get(`/api/faculties`).then(res => {
@@ -47,6 +49,7 @@ function RequestForm() {
             reason: dashboardInput.reason,
             cys: `${dashboardInput.course}/${dashboardInput.year}${dashboardInput.section}`,
             esig: dashboardInput.e_signature,
+            student_email: dashboardInput.email,
         }
 
         const id = localStorage.getItem("auth_id");
@@ -59,6 +62,13 @@ function RequestForm() {
                     showConfirmButton: false,
                     timer: 1500
                 })
+                // EmailJS.sendForm(
+                //     'service_90b52vb',
+                //     'template_zx8vy0y',
+                //     form.current,
+                //     'gR-Bu8Ulwy3mhhNmG').then(res => {
+                //         console.log(res);
+                //     }).catch(err => console.log(err));
             }
             else {
                 setRegister({ ...dashboardInput, error_list: res.data.validation_error });
@@ -75,15 +85,17 @@ function RequestForm() {
                     </ul>
                 </div>
                 <div className="sr-container-two">
-                    <form onSubmit={dashboardSubmit}>
+                    <form ref={form} onSubmit={dashboardSubmit}>
                         <div className="sr-form">
                             <div className="sr-div">
                                 <label className="sr-label" id="sr-label-id" >Fullname:</label>
-                                <input className="sr-field" type="text" name="name" placeholder="Juan C. Dela Cruz" onChange={handleInput} value={dashboardInput.name} disabled readOnly />
+                                <input className="sr-field" type="text" name="name" placeholder="Juan C. Dela Cruz" onChange={handleInput} value={dashboardInput.name} readOnly />
+                                <input className="sr-field" type="hidden" name="to_email" onChange={handleInput} value={dashboardInput.email} />
+                                <input className="sr-field" type="hidden" name="status" value={'Pending'} />
                             </div>
                             <div className="sr-div">
                                 <label className="sr-label">Student no:</label>
-                                <input className="sr-field" type="text" name="student_id" onChange={handleInput} value={dashboardInput.student_id} disabled readOnly />
+                                <input className="sr-field" type="text" name="student_id" onChange={handleInput} value={dashboardInput.student_id} readOnly />
                             </div>
                             <div className="sr-div">
                                 <label className="sr-label">Professor:</label>

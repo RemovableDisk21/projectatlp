@@ -23,7 +23,8 @@ class onprocessed extends Model
         'cys',
         'remarks',
         'status',
-        'dean'
+        'dean',
+        'student_email'
 
     ];
 }

@@ -41,6 +41,7 @@ class AssignController extends Controller
                 'cys'=>$request->cys,
                 'status'=>'pending',
                 'e_signature'=>$request->esig,
+                'student_email'=>$request->student_email
             ]);
 
 

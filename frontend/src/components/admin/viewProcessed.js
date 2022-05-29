@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import jsPDF from "jspdf";
 import bulsulogo from '../../static/images/bsu.png';
 import check from '../../static/images/check.png';
-
+import EmailJS, { send } from 'emailjs-com';
 
 
 function ViewFaculty(props) {
-
+    const form = useRef();
     const generatePDF = (e, filename, reason, student_id, faculty_name, subject_code, semester, school_year, grades, cys, e_sign_student, e_sign_faculty, e_sign_admin, dean) => {
         e.preventDefault();
         var doc = new jsPDF({
@@ -90,6 +90,14 @@ function ViewFaculty(props) {
             title: filename + "-" + student_id,
         });
         doc.save(filename + "-" + student_id + '.pdf');
+
+        EmailJS.sendForm(
+            'service_90b52vb',
+            'template_vmf692c',
+            form.current,
+            'gR-Bu8Ulwy3mhhNmG').then(res => {
+                console.log(res);
+            }).catch(err => console.log(err));
     };
 
     const [loading, setLoading] = useState(true);
@@ -121,6 +129,14 @@ function ViewFaculty(props) {
                     <td>{item.grades}</td>
                     <td>{item.remarks}</td>
                     <td className='text-center'>
+                        <form ref={form}>
+                            <input className="sr-field" type="hidden" name="to_email" value={item.student_email} />
+                            <input className="sr-field" type="hidden" name="subject_code" value={item.subject_code} />
+                            <input className="sr-field" type="hidden" name="status" value={'Processed'} />
+                            <input className="sr-field" type="hidden" name="remarks" value={item.remarks} />
+                            <input className="sr-field" type="hidden" name="grade" value={item.grades} />
+                            <input className="sr-field" type="hidden" name="receiver" value={"the Office of the University Registrar"} />
+                        </form>
                         <button id="download-btn" type="button" onClick={(e) => generatePDF(e, item.name, item.reason, item.student_id, item.faculty, item.subject_code, item.semester, item.school_year, item.grades, item.cys, item.e_sign_student, item.e_sign_faculty, item.e_sign_admin, item.dean)} className="btn download-btn download-btn btn-danger btn-sm">Download</button>
                     </td>
                 </tr>

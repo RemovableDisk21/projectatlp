@@ -378,6 +378,7 @@ class AuthController extends Controller
                     'e_sign_faculty'=>$request->e_sign_faculty,
                     'e_sign_admin'=> "",
                     'dean'=> "",
+                    'student_email'=> $request->student_email,
             ]);
             return response()->json([
                 'status'=> 200,

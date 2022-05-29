@@ -19,6 +19,7 @@ class requestform extends Model
         'cys',
         'e_signature',
         'status',
+        'student_email'
     ];
 
 }
