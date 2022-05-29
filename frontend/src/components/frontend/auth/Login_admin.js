@@ -72,7 +72,7 @@ function Logins() {
                             <div className="card-body">
                                 <form onSubmit={loginSubmit}>
                                     <div className="form-group mb-3">
-                                        <label class="labelers email">Email Address:</label>
+                                        <label class="labelers email">Username:</label> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
                                         <input type=" " name="email" onChange={handleInput} value={loginInput.email} className="form-control" />
                                     </div>
                                     <div className="form-group mb-3">
