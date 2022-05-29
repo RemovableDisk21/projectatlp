@@ -5,7 +5,6 @@ import ViewStudent from "../components/admin/viewStudent";
 import ViewProcessed from "../components/admin/viewProcessed";
 import College_Info from "../components/admin/College_Info";
 
-
 const routes = [
     { path: '/admin', exact: true, name: 'Admin' },
     { path: '/admin/viewFaculty', exact: true, name: 'viewFaculty', component: viewFaculty },
