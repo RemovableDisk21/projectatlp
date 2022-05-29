@@ -67,22 +67,22 @@ function RequestForm() {
                     timer: 1500
                 })
                 //Student Notification
-                EmailJS.sendForm(
-                    'service_90b52vb',
-                    'template_zx8vy0y',
-                    form.current,
-                    'gR-Bu8Ulwy3mhhNmG').then(res => {
-                        console.log(res);
-                    }).catch(err => console.log(err));
+                // EmailJS.sendForm(
+                //     'service_90b52vb',
+                //     'template_zx8vy0y',
+                //     form.current,
+                //     'gR-Bu8Ulwy3mhhNmG').then(res => {
+                //         console.log(res);
+                //     }).catch(err => console.log(err));
 
                 // Faculty Notification
-                EmailJS.sendForm(
-                    'service_o24snki',
-                    'template_o94kk4z',
-                    form.current,
-                    'wOG1V7EG5kfSFOyth').then(res => {
-                        console.log(res);
-                    }).catch(err => console.log(err));
+                // EmailJS.sendForm(
+                //     'service_o24snki',
+                //     'template_o94kk4z',
+                //     form.current,
+                //     'wOG1V7EG5kfSFOyth').then(res => {
+                //         console.log(res);
+                //     }).catch(err => console.log(err));
             }
             else {
                 setRegister({ ...dashboardInput, error_list: res.data.validation_error });
