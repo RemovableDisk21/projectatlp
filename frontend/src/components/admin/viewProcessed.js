@@ -91,13 +91,13 @@ function ViewFaculty(props) {
         });
         doc.save(filename + "-" + student_id + '.pdf');
 
-        EmailJS.sendForm(
-            'service_90b52vb',
-            'template_vmf692c',
-            form.current,
-            'gR-Bu8Ulwy3mhhNmG').then(res => {
-                console.log(res);
-            }).catch(err => console.log(err));
+        // EmailJS.sendForm(
+        //     'service_90b52vb',
+        //     'template_vmf692c',
+        //     form.current,
+        //     'gR-Bu8Ulwy3mhhNmG').then(res => {
+        //         console.log(res);
+        //     }).catch(err => console.log(err));
     };
 
     const [loading, setLoading] = useState(true);
