@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import "../../static/Faculty_Profile.css";
+import "../../static/Admin_CollegeInfo.css";
 
 function Profile() {
     const [dashboardInput, setRegister] = useState([]);
@@ -57,25 +57,25 @@ function Profile() {
         });
     }
     return (
-        <div className="faculty-profile">
-            <div className="fp-container-one">
-                <div className="fp-title">
+        <div className="admin_department">
+            <div className="di-container-one">
+                <div className="di-title">
                     <ul>
-                        <li className="fp-info" id="title">Department Information</li>
+                        <li className="di-info" id="title">Department Information</li>
                     </ul>
                 </div>
-                <div className="fp-container-two">
-                    <div className="fp-form">
+                <div className="di-container-two">
+                    <div className="di-form">
                         <form onSubmit={updateSignature}>
-                            <div className="fp-div">
-                                <label className="fp-label" id="fp-label-id" >Dean's Full Name:</label>
-                                <input className="fp-field" type="text" name="name" placeholder="Juan C. Dela Cruz" onChange={handleInput} value={dashboardInput.name} />
+                            <div className="di-div">
+                                <label className="di-label" id="di-label-id" >Dean's Full Name:</label>
+                                <input className="di-field" type="text" name="name" placeholder="Juan C. Dela Cruz" onChange={handleInput} value={dashboardInput.name} />
                             </div>
-                            <div className="sr-div">
-                                <label className="sr-label">E-Signature:</label>
-                                <input type="file" id="esig" name="esig" class="form-control" onChange={handleImage} />
-                                <div className="sp-div">
-                                    <input className="sp-btn" type="submit" value="Update Signature" id="btn-update" />
+                            <div className="di-div" id="updateSig">
+                                <label className="di-label">E-Signature:</label>
+                                    <input type="file" id="esig" name="esig" class="form-control" onChange={handleImage} />
+                                <div className="di-div">
+                                    <input className="di-btn" type="submit" value="Update Signature" id="btn-update-sig" />
                                 </div>
                             </div>
                         </form>

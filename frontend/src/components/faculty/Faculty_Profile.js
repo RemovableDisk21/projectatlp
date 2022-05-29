@@ -115,11 +115,11 @@ function Profile() {
                             </div>
                         </form>
                         <form onSubmit={updateSignature}>
-                            <div className="sr-div">
-                                <label className="sr-label">E-Signature:</label>
-                                <input type="file" id="esig" name="esig" class="form-control" onChange={handleImage} />
-                                <div className="sp-div">
-                                    <input className="sp-btn" type="submit" value="Update Signature" id="btn-update" />
+                            <div className="fp-div" id="updateSig">
+                                <label className="fp-label">E-Signature:</label>
+                                    <input type="file" id="esig" name="esig" class="form-control" onChange={handleImage} />
+                                <div className="fp-div">
+                                    <input className="fp-btn" type="submit" value="Update Signature" id="btn-update-sig" />
                                 </div>
                             </div>
                         </form>

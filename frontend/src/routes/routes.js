@@ -13,7 +13,7 @@ const routes = [
     { path: '/admin/viewStudent', exact: true, name: 'viewStudent', component: ViewStudent },
     { path: '/admin/viewOnprocessed', exact: true, name: 'viewOnprocessed', component: ViewOnprocessed },
     { path: '/admin/viewProcessed', exact: true, name: 'viewProcessed', component: ViewProcessed },
-    { path: '/admin/Department_Information', exact: true, name: 'viewProcessed', component: College_Info },
+    { path: '/admin/Department_Information', exact: true, name: 'Department_Information', component: College_Info },
 ];
 
 export default routes;
