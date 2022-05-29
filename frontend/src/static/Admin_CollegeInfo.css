@@ -1,4 +1,4 @@
-.faculty-profile {
+.admin_department {
     display: flex;
     flex-direction: row;
     position: relative;
@@ -8,13 +8,13 @@
     width: 100%;
 }
 
-.fp-container-one  {
+.di-container-one  {
     position: absolute;
     width: 100%;
     margin-top:50px;
 }
 
-.fp-title {
+.di-title {
     font-family: 'PT Serif';
     font-style: normal;
     display: flex;
@@ -23,7 +23,7 @@
     color: #FFFFFF;
 }
 
-.fp-title #title {
+.di-title #title {
     font-weight: 700;
     font-size: 40px;
     line-height: 38px;
@@ -31,7 +31,7 @@
     margin-top: 2rem;
 }
 
-.fp-title li {
+.di-title li {
     display: flex;
     align-items: center;
     text-align: center;
@@ -39,7 +39,7 @@
 }
 
 /* Form */
-.fp-container-two {
+.di-container-two {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,9 +50,9 @@
     width: 100%;
 }
 
-.fp-container-two .fp-form {
+.di-container-two .di-form {
     width: 740px;
-    height: 435px;
+    height: 250px;
     left: 41%;
     margin-top: 70px;
     background: #FFFFFF;
@@ -62,24 +62,7 @@
     border-radius: 21px;
 }
 
-.fp-div #btn-update {
-    font-family: 'PT Serif';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-    color: #FFFFFF;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-    width: 140px;
-    height: 32px;
-    background: #763435;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 136px;
-    margin-left: 18rem;
-}
-
-.fp-div input {
+.di-div input {
     width: 300px;
     height: 35px;
     background: #FFFFFF;
@@ -87,29 +70,30 @@
     box-sizing: border-box;
     border-radius: 10px;
     cursor: pointer;
+    margin-top: 2.5rem;
 }
 
-.fp-div input, 
-.fp-div label {
+.di-div input, 
+.di-div label {
     display: inline-block;
 }
 
-.fp-div label {
+.di-div label {
     width: 30%;
     text-align: right;
     font-weight: bold;
 }
 
-.fp-field {
-    margin: 0 0px 25px 15px;
+.di-field {
+    margin: 0 0px 0px 15px;
     padding-left: 13px;
 }
 
-.fp-div #fp-label-id {
+.di-div #di-label-id {
     margin-top: 35px;
 }
 
-.fp-div input::placeholder {
+.di-div input::placeholder {
     font-family: 'PT Serif';
     font-style: normal;
     font-weight: 400;
@@ -119,19 +103,15 @@
     color: #ABABAB;
 }
 
-.fp-div input[readOnly]{
+.di-div input[readOnly]{
     background: #DADADA;
 }
 
-.fp-container-two #updateSig {
-    margin-top: 1.2rem;
-}
-
-.fp-container-two #updateSig .fp-label {
+.di-container-two #updateSig .di-label {
     margin-right: 1rem;
 }
 
-.fp-container-two #updateSig #btn-update-sig {
+.di-container-two #updateSig #btn-update-sig {
     font-family: 'PT Serif';
     font-style: normal;
     font-weight: 400;
@@ -139,6 +119,7 @@
     line-height: 19px;
     color: #FFFFFF;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
     width: 170px;
     height: 32px;
     background: #763435;

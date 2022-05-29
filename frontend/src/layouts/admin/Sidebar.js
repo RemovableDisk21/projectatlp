@@ -39,6 +39,7 @@ const Sidebar = () => {
             </div>
         <div className="sb-sidenav-menu">
             <div className="nav">
+                <Link className="nav-link-side" to="/admin/Department_Information"><a>Department Information</a></Link>
                 <Link className="nav-link-side" to="/admin/viewOnprocessed"><a>On Process Forms</a></Link>
                 <Link className="nav-link-side" to="/admin/viewProcessed"><a>Finished Forms</a></Link>
                 <Link className="nav-link-side" to="/admin/viewStudent"><a>Student List</a></Link>

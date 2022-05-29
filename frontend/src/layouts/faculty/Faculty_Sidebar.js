@@ -39,7 +39,6 @@ const Sidebar = () => {
             <div className="sb-sidenav-menu">
                 <div className="nav">
                     <Link className="nav-link-side" to="/faculty/Profile"><a>Profile</a></Link>
-                    <Link className="nav-link-side" to="/faculty/Completion_Request"><a>Completion Request</a></Link>
                     <Link className="nav-link-side" to="/faculty/Completion_List"><a>Completion List</a></Link>
                     <Link className="nav-link-side" onClick={logoutSubmit} ><a>Logout</a></Link>
                 </div>
