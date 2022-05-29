@@ -11,13 +11,14 @@ function RequestForm() {
     const [subject_code, setSubjectCode] = useState(""); //handleInput
     const [semester, setSemester] = useState(""); //handleInput
     const [school_year, setSchoolYear] = useState(""); //handleInput
+    const [facEmail, setFacultyEmail] = useState(""); //handleInput
+    const [facName, setFacultyName] = useState(""); //handleInput
     const form = useRef();
     useEffect(() => {
         const id = localStorage.getItem("auth_id");
         axios.get(`/api/getprofile/${id}`).then(res => {
             if (res.status === 200) {
                 setRegister(res.data.profile);
-                console.log(res.data.profile);
             }
         });
         axios.get(`/api/faculties`).then(res => {
@@ -26,7 +27,6 @@ function RequestForm() {
             }
         });
     }, []);
-
     const handleInput = (e) => {
         e.persist();
         setRegister({ ...dashboardInput, [e.target.name]: e.target.value });
@@ -36,13 +36,17 @@ function RequestForm() {
         e.persist();
         e.preventDefault();
         setFaculty(e.target.value);
+        let faculty_id = e.target.value;
+        let faculty_info = faculties.find(faculty => faculty.id == faculty_id);
+        setFacultyEmail(faculty_info.email);
+        setFacultyName(faculty_info.name);
     }
     const dashboardSubmit = (e) => {
         e.preventDefault();
         const data = {
             name: dashboardInput.name,
             student_id: dashboardInput.student_id,
-            faculty: facultyInput,
+            faculty: facName,
             subject_code: subject_code,
             semester: semester,
             school_year: school_year,
@@ -62,13 +66,23 @@ function RequestForm() {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                // EmailJS.sendForm(
-                //     'service_90b52vb',
-                //     'template_zx8vy0y',
-                //     form.current,
-                //     'gR-Bu8Ulwy3mhhNmG').then(res => {
-                //         console.log(res);
-                //     }).catch(err => console.log(err));
+                //Student Notification
+                EmailJS.sendForm(
+                    'service_90b52vb',
+                    'template_zx8vy0y',
+                    form.current,
+                    'gR-Bu8Ulwy3mhhNmG').then(res => {
+                        console.log(res);
+                    }).catch(err => console.log(err));
+
+                // Faculty Notification
+                EmailJS.sendForm(
+                    'service_o24snki',
+                    'template_o94kk4z',
+                    form.current,
+                    'wOG1V7EG5kfSFOyth').then(res => {
+                        console.log(res);
+                    }).catch(err => console.log(err));
             }
             else {
                 setRegister({ ...dashboardInput, error_list: res.data.validation_error });
@@ -91,7 +105,10 @@ function RequestForm() {
                                 <label className="sr-label" id="sr-label-id" >Fullname:</label>
                                 <input className="sr-field" type="text" name="name" placeholder="Juan C. Dela Cruz" onChange={handleInput} value={dashboardInput.name} readOnly />
                                 <input className="sr-field" type="hidden" name="to_email" onChange={handleInput} value={dashboardInput.email} />
+                                <input className="sr-field" type="hidden" name="to_faculty" onChange={handleinput} value={facEmail} />
+                                <input className="sr-field" type="hidden" name="faculty" onChange={handleinput} value={facName} />
                                 <input className="sr-field" type="hidden" name="status" value={'Pending'} />
+                                <input className="sr-field" type="hidden" name="cys" value={`${dashboardInput.course} ${dashboardInput.year}${dashboardInput.section}`} />
                             </div>
                             <div className="sr-div">
                                 <label className="sr-label">Student no:</label>
@@ -99,10 +116,10 @@ function RequestForm() {
                             </div>
                             <div className="sr-div">
                                 <label className="sr-label">Professor:</label>
-                                <select className="sr-select" id='faculty' name="faculty" value={facultyInput} onChange={handleinput} aria-label="Default select example">
+                                <select className="sr-select" id='faculty' name="faculty_name" value={facultyInput} onChange={handleinput} aria-label="Default select example">
                                     <option value={'0'}>Faculty</option>
                                     {faculties.map((faculty, index) =>
-                                        <option key={faculty.id} name={faculty.id} value={faculty.name}>{faculty.name}</option>
+                                        <option key={faculty.id} name={faculty.id} value={faculty.id}>{faculty.name}</option>
                                     )}
                                 </select>
                             </div>

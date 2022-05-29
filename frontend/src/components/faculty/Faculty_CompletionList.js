@@ -62,13 +62,13 @@ function CompletionList() {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                // EmailJS.sendForm(
-                //     'service_90b52vb',
-                //     'template_vmf692c',
-                //     form.current,
-                //     'gR-Bu8Ulwy3mhhNmG').then(res => {
-                //         console.log(res);
-                //     }).catch(err => console.log(err));
+                EmailJS.sendForm(
+                    'service_90b52vb',
+                    'template_vmf692c',
+                    form.current,
+                    'gR-Bu8Ulwy3mhhNmG').then(res => {
+                        console.log(res);
+                    }).catch(err => console.log(err));
 
                 thisClicked.closest("tr").remove();
             }
