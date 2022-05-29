@@ -12,7 +12,7 @@ class ProfileController extends Controller
     //
     public function profile(Request $request)
     {
-        $validator = Validator::make($request ->all(),[
+        $validator = Validator::make($request->all(),[
             'name'=>'required',
             'number'=>'required',
             'course'=>'required',
@@ -27,12 +27,11 @@ class ProfileController extends Controller
         {
             return response()->json([
                 'validation_error'=>$validator->messages(),
-                'message'=>'ano mali ko'
             ]);
         }
         else
         {
-            $profile = Profile::create([ //eto sa table
+            $profile = Profile::create([
                 'name'=> $request->name,
                 'number'=> $request->number,
                 'student_id'=> $request->student_id,
@@ -60,9 +59,6 @@ class ProfileController extends Controller
         $validator = Validator::make($request ->all(),[
             'name'=>'required',
             'number'=>'required',
-
-
-
         ]);
 
         if($validator->fails())

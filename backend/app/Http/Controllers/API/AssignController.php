@@ -30,7 +30,7 @@ class AssignController extends Controller
         }
         else
         {
-            $user = requestform::create([ //eto sa table
+            $user = requestform::create([
                 'name'=> $request->name,
                 'student_id'=> $request->student_id,
                 'faculty'=>$request->faculty,

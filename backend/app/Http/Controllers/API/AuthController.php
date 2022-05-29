@@ -237,7 +237,7 @@ class AuthController extends Controller
             {
                 $faculty->status = $request-> status;
                 $faculty->update();
-                $profile = Profile::create([ //eto sa table
+                $profile = Profile::create([
                     'name'=>$faculty->name,
                     'userid'=> $faculty->id,
                     'student_id'=>$faculty->student_id,
