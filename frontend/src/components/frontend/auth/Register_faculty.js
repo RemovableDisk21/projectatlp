@@ -1,12 +1,14 @@
-
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import Navbar from "../../../layouts/frontend/Navbar";
 import '../../../static/register.css';
+import EmailJS from "emailjs-com";
+
 function Registers() {
     const history = useHistory();
+    const form = useRef();
     const [registerInput, setRegister] = useState({
         name: '',
         employee_id: '',
@@ -42,7 +44,11 @@ function Registers() {
                         timer: 1500
                     })
                     history.push('/login');
-
+                    EmailJS.sendForm(
+                        "service_csfbmua","template_ixxh3xd",form.current,"KA0rISbjAH9nNudt-"
+                    ).then(res=>{
+                        console.log(res);
+                    }).catch(err=>console.log(err));
                 }
                 else {
                     setRegister({ ...registerInput, error_list: res.data.validation_error });
@@ -67,7 +73,10 @@ function Registers() {
                         <div className="card" class="register_container">
                             <h4 class="reg_head">FACULTY REGISTER</h4>
                             <div className="card-body">
-                                <form onSubmit={registerSubmit}>
+                                <form ref={form} onSubmit={registerSubmit}>
+                                    <input type="hidden" name="message" value="Your registration to the Completion of Grades System as a Faculty was successful. Unfortunately, your account has not yet been verified. Please be patient while the administrator is verifying your information. 
+"/>
+                                    <input type="hidden" name="status" value="Pending" />
                                     <div className="form-group mb-3">
                                         <label class="labelers">Full Name:</label>
                                         <input type="" name="name" onChange={handleInput} value={registerInput.name} className="form-control" />
