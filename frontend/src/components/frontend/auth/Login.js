@@ -95,7 +95,7 @@ function Login() {
                                 <form onSubmit={loginSubmit}>
                                     <div className="form-group mb-3">
                                         <label class="labelers email">Email Address:</label>
-                                        <input type="email" name="email" onChange={handleInput} value={loginInput.email} className="form-control inputters" />
+                                        <input type="text" name="email" onChange={handleInput} value={loginInput.email} className="form-control inputters" />
                                     </div>
                                     <div className="form-group mb-3">
                                         <label class="labelers pass">Password:</label>
