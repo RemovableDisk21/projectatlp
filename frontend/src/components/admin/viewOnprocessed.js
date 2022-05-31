@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import "../../static/onprocess.css";
-function ViewFaculty(props) {
 
-
-    const [loading, setLoading] = useState(true);
+function OnProcessForms(props) {
     const [faculty, setStudents] = useState([]);
     const [dean, setDean] = useState([]);
 
@@ -14,7 +12,6 @@ function ViewFaculty(props) {
         axios.get(`/api/onprocessed`).then(res => {
             if (res.status === 200) {
                 setStudents(res.data.pending);
-                setLoading(false);
             }
         });
         const id = localStorage.getItem("auth_id");
@@ -40,39 +37,32 @@ function ViewFaculty(props) {
 
         axios.put(`/api/processed/${id}`, data).then(res => {
             if (res.data.status === 200) {
-                swal(
-                    'Good job!',
-                    'The form is completed!',
-                    'success'
-                )
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'The form has been completed',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 thisClicked.closest("tr").remove();
-
             }
-
         });
     }
 
-
-    if (loading) {
-        return <h4>Loading On Proccesed Form...</h4>
-    }
-    else {
-        var faculty_HTMLTABLE = "";
-
-        faculty_HTMLTABLE = faculty.map((item, index) => {
-            return (
-                <tr key={index}>
-                    <td>{item.name}</td>
-                    <td>{item.student_id}</td>
-                    <td>{item.subject_code}</td>
-                    <td>{item.grades}</td>
-                    <td className='text-center'>
-                        <button id="send-btn" type="button" onClick={(e) => update(e, item.id)} className="btn send-btn btn-danger btn-sm">Process</button>
-                    </td>
-                </tr>
-            );
-        });
-    }
+    var faculty_HTMLTABLE = "";
+    faculty_HTMLTABLE = faculty.map((item, index) => {
+        return (
+            <tr key={index}>
+                <td>{item.name}</td>
+                <td>{item.student_id}</td>
+                <td>{item.subject_code}</td>
+                <td>{item.grades}</td>
+                <td className='text-center'>
+                    <button id="send-btn" type="button" onClick={(e) => update(e, item.id)} className="btn send-btn btn-danger btn-sm">Process</button>
+                </td>
+            </tr>
+        );
+    });
 
     return (
         <div class="outer-container">
@@ -83,7 +73,6 @@ function ViewFaculty(props) {
                     <div className="col-md-12">
                         <div className="card">
                             <div className="card-body">
-
                                 <table className="table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -98,7 +87,6 @@ function ViewFaculty(props) {
                                         {faculty_HTMLTABLE}
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
                     </div>
@@ -109,4 +97,4 @@ function ViewFaculty(props) {
 
 }
 
-export default ViewFaculty;
+export default OnProcessForms;

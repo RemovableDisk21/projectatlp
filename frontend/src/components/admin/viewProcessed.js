@@ -5,8 +5,7 @@ import bulsulogo from '../../static/images/bsu.png';
 import check from '../../static/images/check.png';
 import EmailJS, { send } from 'emailjs-com';
 
-
-function ViewFaculty(props) {
+function FinishedForms(props) {
     const form = useRef();
     const generatePDF = (e, filename, reason, student_id, faculty_name, subject_code, semester, school_year, grades, cys, e_sign_student, e_sign_faculty, e_sign_admin, dean) => {
         e.preventDefault();
@@ -100,7 +99,6 @@ function ViewFaculty(props) {
         //     }).catch(err => console.log(err));
     };
 
-    const [loading, setLoading] = useState(true);
     const [faculty, setStudents] = useState([]);
 
     useEffect(() => {
@@ -108,41 +106,34 @@ function ViewFaculty(props) {
         axios.get(`/api/done`).then(res => {
             if (res.status === 200) {
                 setStudents(res.data.pending)
-                setLoading(false);
             }
         });
 
     }, []);
 
-    if (loading) {
-        return <h4>Loading On Proccesed Form...</h4>
-    }
-    else {
-        var faculty_HTMLTABLE = "";
-
-        faculty_HTMLTABLE = faculty.map((item, index) => {
-            return (
-                <tr key={index}>
-                    <td>{item.name}</td>
-                    <td>{item.student_id}</td>
-                    <td>{item.subject_code}</td>
-                    <td>{item.grades}</td>
-                    <td>{item.remarks}</td>
-                    <td className='text-center'>
-                        <form ref={form}>
-                            <input className="sr-field" type="hidden" name="to_email" value={item.student_email} />
-                            <input className="sr-field" type="hidden" name="subject_code" value={item.subject_code} />
-                            <input className="sr-field" type="hidden" name="status" value={'Processed'} />
-                            <input className="sr-field" type="hidden" name="remarks" value={item.remarks} />
-                            <input className="sr-field" type="hidden" name="grade" value={item.grades} />
-                            <input className="sr-field" type="hidden" name="receiver" value={"the Office of the University Registrar"} />
-                        </form>
-                        <button id="download-btn" type="button" onClick={(e) => generatePDF(e, item.name, item.reason, item.student_id, item.faculty, item.subject_code, item.semester, item.school_year, item.grades, item.cys, item.e_sign_student, item.e_sign_faculty, item.e_sign_admin, item.dean)} className="btn download-btn download-btn btn-danger btn-sm">Download</button>
-                    </td>
-                </tr>
-            );
-        });
-    }
+    var faculty_HTMLTABLE = "";
+    faculty_HTMLTABLE = faculty.map((item, index) => {
+        return (
+            <tr key={index}>
+                <td>{item.name}</td>
+                <td>{item.student_id}</td>
+                <td>{item.subject_code}</td>
+                <td>{item.grades}</td>
+                <td>{item.remarks}</td>
+                <td className='text-center'>
+                    <form ref={form}>
+                        <input className="sr-field" type="hidden" name="to_email" value={item.student_email} />
+                        <input className="sr-field" type="hidden" name="subject_code" value={item.subject_code} />
+                        <input className="sr-field" type="hidden" name="status" value={'Processed'} />
+                        <input className="sr-field" type="hidden" name="remarks" value={item.remarks} />
+                        <input className="sr-field" type="hidden" name="grade" value={item.grades} />
+                        <input className="sr-field" type="hidden" name="receiver" value={"the Office of the University Registrar"} />
+                    </form>
+                    <button id="download-btn" type="button" onClick={(e) => generatePDF(e, item.name, item.reason, item.student_id, item.faculty, item.subject_code, item.semester, item.school_year, item.grades, item.cys, item.e_sign_student, item.e_sign_faculty, item.e_sign_admin, item.dean)} className="btn download-btn download-btn btn-danger btn-sm">Download</button>
+                </td>
+            </tr>
+        );
+    });
 
     return (
         <div class="outer-container">
@@ -179,4 +170,4 @@ function ViewFaculty(props) {
 
 }
 
-export default ViewFaculty;
+export default FinishedForms;

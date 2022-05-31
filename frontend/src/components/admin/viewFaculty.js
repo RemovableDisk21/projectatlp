@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import swal from 'sweetalert';
-function ViewFaculty(props) {
+import Swal from 'sweetalert2';
 
-
-    const [loading, setLoading] = useState(true);
+function PendingFaculty(props) {
     const [faculty, setStudents] = useState([]);
 
     useEffect(() => {
-
         axios.get(`/api/pendingfaculty`).then(res => {
             if (res.status === 200) {
                 setStudents(res.data.pending)
-                setLoading(false);
             }
         });
 
@@ -21,7 +17,6 @@ function ViewFaculty(props) {
 
     const update = (e, id) => {
         e.preventDefault();
-
         const thisClicked = e.currentTarget;
         // const student_id = props.match.params.id;
         // const data = studentInput;
@@ -33,55 +28,53 @@ function ViewFaculty(props) {
 
         axios.put(`/api/update/${id}`, data).then(res => {
             if (res.data.status === 200) {
-                swal("Success!", res.data.message, "success")
-                console.log("test");
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Faculty Accepted',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 thisClicked.closest("tr").remove();
-
             }
-
         });
     }
-    const deleteStudent = (e, id) => {
-        e.preventDefault();
 
+    const deleteFaculty = (e, id) => {
+        e.preventDefault();
         const thisClicked = e.currentTarget;
-        thisClicked.innerText = "Deleting";
 
         axios.delete(`/api/delete-faculty/${id}`).then(res => {
             if (res.data.status === 200) {
-                swal("Deleted!", res.data.message, "success");
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Faculty Declined',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 thisClicked.closest("tr").remove();
             }
-            else if (res.data.status === 404) {
-                swal("Error", res.data.message, "error");
-                thisClicked.innerText = "Delete";
-            }
         });
     }
 
-    if (loading) {
-        return <h4>Loading Pending Faculty Data...</h4>
-    }
-    else {
-        var faculty_HTMLTABLE = "";
-
-        faculty_HTMLTABLE = faculty.map((item, index) => {
-            return (
-                <tr key={index}>
-                    <td>{item.name}</td>
-                    <td>{item.employee_id}</td>
-                    <td>{item.email}</td>
-                    <td>{item.role}</td>
-                    <td>{item.status}</td>
-                    <td className='text-center'>
-                        <button onClick={(e) => update(e, item.id)} className="btn btn-success btn-sm">Confirm</button>
-                        &nbsp;&nbsp;&nbsp;
-                        <button type="button" onClick={(e) => deleteStudent(e, item.id)} className="btn btn-danger btn-sm">Decline</button>
-                    </td>
-                </tr>
-            );
-        });
-    }
+    var faculty_HTMLTABLE = "";
+    faculty_HTMLTABLE = faculty.map((item, index) => {
+        return (
+            <tr key={index}>
+                <td>{item.name}</td>
+                <td>{item.employee_id}</td>
+                <td>{item.email}</td>
+                <td>{item.role}</td>
+                <td>{item.status}</td>
+                <td className='text-center'>
+                    <button onClick={(e) => update(e, item.id)} className="btn btn-success btn-sm">Confirm</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" onClick={(e) => deleteFaculty(e, item.id)} className="btn btn-danger btn-sm">Decline</button>
+                </td>
+            </tr>
+        );
+    });
 
     return (
         <div class="outer-container">
@@ -120,4 +113,4 @@ function ViewFaculty(props) {
 
 }
 
-export default ViewFaculty;
+export default PendingFaculty;

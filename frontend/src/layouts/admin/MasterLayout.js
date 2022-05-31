@@ -1,45 +1,39 @@
 import React from "react";
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from './Navbar';
 import Sidebar from "./Sidebar";
+import routes from "../../routes/routes";
 import '../../assets/admin/css/styles.css';
 import '../../assets/admin/js/scripts';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import routes from "../../routes/routes"; 
 
 const MasterLayout = () => {
-    return(
+    return (
         <div className="sb-nav-fixed">
             <Navbar />
             <div id="layoutSidenav">
-
-            <div id="layoutSidenav_nav">
+                <div id="layoutSidenav_nav">
                     <Sidebar />
                 </div>
                 <div id="layoutSidenav_content">
                     <main>
-                    
-
-                    <Switch>
-                        { routes.map((route, idx) =>{
-                            return(
-                                route.component && (
-                                    <Route 
-                                        key={idx}
-                                        path={route.path}
-                                        exact={route.exact}
-                                        name={route.name}
-                                        render={(props) =>(
-                                            <route.component {...props} />
-                                        )}
-                                    />
+                        <Switch>
+                            {routes.map((route, idx) => {
+                                return (
+                                    route.component && (
+                                        <Route
+                                            key={idx}
+                                            path={route.path}
+                                            exact={route.exact}
+                                            name={route.name}
+                                            render={(props) => (
+                                                <route.component {...props} />
+                                            )}
+                                        />
+                                    )
                                 )
-                            )
-                        })}
-                        <Redirect from="admin" to="/admin/profile" />
-                    </Switch>
-
+                            })}
+                        </Switch>
                     </main>
-
                 </div>
             </div>
         </div>
