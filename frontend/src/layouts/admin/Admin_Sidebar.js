@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 import icon from "../../static/images/admin-icon.png";
 import "../../static/navigation.css";
 
-
 const Sidebar = () => {
     const history = useHistory();
     const logoutSubmit = (e) => {
@@ -39,12 +38,12 @@ const Sidebar = () => {
             </div>
         <div className="sb-sidenav-menu">
             <div className="nav">
-                <Link className="nav-link-side" to="/admin/Department_Information"><a>Department Information</a></Link>
-                <Link className="nav-link-side" to="/admin/viewOnprocessed"><a>On Process Forms</a></Link>
-                <Link className="nav-link-side" to="/admin/viewProcessed"><a>Finished Forms</a></Link>
-                <Link className="nav-link-side" to="/admin/viewStudent"><a>Student List</a></Link>
-                <Link className="nav-link-side" to="/admin/viewFaculties"><a>Faculty List</a></Link>
-                <Link className="nav-link-side" to="/admin/viewFaculty"><a>Pending Faculty</a></Link>
+                <Link className="nav-link-side" to="/admin/Admin_Department_Information"><a>Department Information</a></Link>
+                <Link className="nav-link-side" to="/admin/Admin_ProcessForms"><a>On Process Forms</a></Link>
+                <Link className="nav-link-side" to="/admin/Admin_FinishedForms"><a>Finished Forms</a></Link>
+                <Link className="nav-link-side" to="/admin/Admin_StudentList"><a>Student List</a></Link>
+                <Link className="nav-link-side" to="/admin/Admin_FacultyList"><a>Faculty List</a></Link>
+                <Link className="nav-link-side" to="/admin/Admin_PendingFaculty"><a>Pending Faculty</a></Link>
                 <Link className="nav-link-side" onClick={logoutSubmit} ><a>Logout</a></Link>
             </div>
         </div>

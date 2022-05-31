@@ -43,7 +43,12 @@ class AuthController extends Controller
                 'userid'=> $user->id,
                 'email'=>$user->email,
                 'e_signature'=>"",
-
+                'student_id'=>"",
+                'employee_id'=>"",
+                'number'=> '',
+                'course'=>'',
+                'year'=>'',
+                'section'=>'',
 
             ]);
          $token = $user->createToken($user->email.'_Token')->plainTextToken;

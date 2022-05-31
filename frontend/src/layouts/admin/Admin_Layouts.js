@@ -1,23 +1,23 @@
 import React from "react";
-import { Switch, Route, Redirect } from 'react-router-dom';
-import Navbar from './Navbar';
-import Sidebar from "./Sidebar";
-import routes from "../../routes/routes";
+import { Switch, Route } from 'react-router-dom';
+import Admin_Routes from "../../routes/Admin_Routes";
+import Admin_Navbar from './Admin_Navbar';
+import Admin_Sidebar from "./Admin_Sidebar";
 import '../../assets/admin/css/styles.css';
 import '../../assets/admin/js/scripts';
 
-const MasterLayout = () => {
+const AdminLayouts = () => {
     return (
         <div className="sb-nav-fixed">
-            <Navbar />
+            <Admin_Navbar />
             <div id="layoutSidenav">
                 <div id="layoutSidenav_nav">
-                    <Sidebar />
+                    <Admin_Sidebar />
                 </div>
                 <div id="layoutSidenav_content">
                     <main>
                         <Switch>
-                            {routes.map((route, idx) => {
+                            {Admin_Routes.map((route, idx) => {
                                 return (
                                     route.component && (
                                         <Route
@@ -40,4 +40,4 @@ const MasterLayout = () => {
     );
 }
 
-export default MasterLayout;
+export default AdminLayouts;

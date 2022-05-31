@@ -5,7 +5,7 @@ import Login from './components/frontend/auth/Login';
 import LoginAdmin from './components/frontend/auth/Login_admin';
 import Register from './components/frontend/auth/Register';
 import RegisterFaculty from './components/frontend/auth/Register_faculty';
-import MasterLayout from './layouts/admin/MasterLayout';
+import AdminLayouts from './layouts/admin/Admin_Layouts';
 import FacultyLayouts from './layouts/faculty/Faculty_Layouts';
 import StudentLayouts from './layouts/student/Student_Layouts';
 
@@ -30,7 +30,7 @@ function App() {
                     <Route path="/register" component={Register} />
                     <Route path="/register_faculty" component={RegisterFaculty} />
                     <Route path="/login_admin" component={LoginAdmin} />
-                    <Route path="/admin" name="Admin" render={(props) => <MasterLayout {...props} />} />
+                    <Route path="/admin" name="Admin" render={(props) => <AdminLayouts {...props} />} />
                     <Route path="/faculty" name="Faculty" render={(props) => <FacultyLayouts {...props} />} />
                     <Route path="/student" name="Student" render={(props) => <StudentLayouts {...props} />} />
                 </Switch>
