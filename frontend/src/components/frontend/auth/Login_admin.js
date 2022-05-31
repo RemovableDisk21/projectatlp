@@ -41,21 +41,46 @@ function Logins() {
                     localStorage.setItem('auth_id', res.data.id);
                     localStorage.setItem('auth_role', res.data.role);
 
-                    axios.post(`/api/admin_login`, data).then(res => {
-                        if (res.data.status === 200) {
-                            Swal.fire({
-                                position: 'top-center',
-                                icon: 'success',
-                                title: 'Login Successful',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                            history.push('/admin/Department_Information');
-                        }
-                        else {
-                            setLogin({ ...loginInput, error_list: res.data.validation_error });
-                        }
-                    });
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'Login Successful',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    history.push('/admin/Admin_Department_Information');
+                    // axios.post(`/api/admin_login`, data).then(res => {
+                    //     if (res.data.status === 200) {
+                        //     Swal.fire({
+                        //         position: 'top-center',
+                        //         icon: 'success',
+                        //         title: 'Login Successful',
+                        //         showConfirmButton: false,
+                        //         timer: 1500
+                        //     })
+                        //     history.push('/admin/Admin_Department_Information');
+                        // }
+                    //     else {
+                    //         setLogin({ ...loginInput, error_list: res.data.validation_error });
+                    //         Swal.fire({
+                    //             position: 'top-center',
+                    //             icon: 'error',
+                    //             title: 'Invalid Credentials',
+                    //             text: 'Username or Password is incorrect.',
+                    //             showConfirmButton: true,
+                    //         })
+                    //     }
+                    // });
+                }
+                else {
+                    setLogin({ ...loginInput, error_list: res.data.validation_error });
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'error',
+                        title: 'Invalid Credentials',
+                        text: 'Username or Password is incorrect.',
+                        showConfirmButton: true,
+                    })
                 }
             });
         });

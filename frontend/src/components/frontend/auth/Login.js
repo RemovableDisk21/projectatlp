@@ -74,6 +74,13 @@ function Login() {
                 }
                 else {
                     setLogin({ ...loginInput, error_list: res.data.validation_error });
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'error',
+                        title: 'Invalid Credentials',
+                        text: 'Email or Password is incorrect.',
+                        showConfirmButton: true,
+                    })
                 }
             });
         });
