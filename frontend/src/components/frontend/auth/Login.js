@@ -20,21 +20,21 @@ function Login() {
 
     const loginSubmit = (e) => {
         e.preventDefault();
-
+        if (loginInput.email === 'admin') {
+            loginInput.email = 'admin@example.com';
+        }
         const data = {
             email: loginInput.email,
             password: loginInput.password,
         }
         axios.get('/sanctum/csrf-cookie').then(response => {
+            axios.post(`/api/register_admin`).then(res => {
+                if (res.data.status === 200) {
+                    console.log('Registered');
+                }
+            });
             axios.post(`api/login`, data).then(res => {
                 if (res.data.status === 200) {
-                    Swal.fire({
-                        position: 'top-center',
-                        icon: 'success',
-                        title: 'Login Successful',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
                     localStorage.setItem('auth_token', res.data.token);
                     localStorage.setItem('auth_name', res.data.username);
                     localStorage.setItem('auth_id', res.data.id);
@@ -49,8 +49,7 @@ function Login() {
                             showConfirmButton: false,
                             timer: 1500
                         })
-
-                    } else if (res.data.role === "student") {
+                    } else {
                         Swal.fire({
                             position: 'top-center',
                             icon: 'success',
@@ -58,18 +57,15 @@ function Login() {
                             showConfirmButton: false,
                             timer: 1500
                         })
-                        history.push('/student/Profile');
-                    }
-
-                    else if (res.data.role === "faculty" && res.data.user_status == "accepted") {
-                        Swal.fire({
-                            position: 'top-center',
-                            icon: 'success',
-                            title: 'Login Successful',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                        history.push('/faculty/Profile');
+                        if (res.data.role === "faculty" && res.data.user_status == "accepted") {
+                            history.push('/faculty/Profile');
+                        }
+                        else if (res.data.role === "student") {
+                            history.push('/student/Profile');
+                        }
+                        else if (res.data.role === "admin") {
+                            history.push('/admin/Admin_Department_Information');
+                        }
                     }
                 }
                 else {
