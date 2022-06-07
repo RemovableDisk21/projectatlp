@@ -27,7 +27,7 @@ function Register() {
         e.preventDefault();
         setConfirmPassword(e.target.value);
         setConfirmError('');
-        if (confirmPassword.confirmPass != registerInput.password) {
+        if (confirmPassword != registerInput.password) {
             setConfirmError('Password does not match.');
             return false;
         } else {
