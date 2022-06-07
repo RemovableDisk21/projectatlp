@@ -26,6 +26,7 @@ function Register() {
     const handlePassword = (e) => {
         e.preventDefault();
         setConfirmPassword(e.target.value);
+        setConfirmError('');
         if (confirmPassword.confirmPass != registerInput.password) {
             setConfirmError('Password does not match.');
             return false;
