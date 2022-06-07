@@ -9,14 +9,27 @@ import EmailJS from "emailjs-com";
 function Register_Faculty() {
     const history = useHistory();
     const form = useRef();
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [confirmError, setConfirmError] = useState('');
     const [registerInput, setRegister] = useState({
         name: '',
         employee_id: '',
         email: '',
         password: '',
         error_list: [],
-
     });
+
+
+    const handlePassword = (e) => {
+        e.preventDefault();
+        if (confirmPassword.confirmPass != registerInput.password) {
+            setConfirmError('Password does not match.');
+            return false;
+        } else {
+            setConfirmError('');
+            return true;
+        }
+    }
 
     const handleInput = (e) => {
         e.persist();
@@ -24,37 +37,39 @@ function Register_Faculty() {
     }
     const registerSubmit = (e) => {
         e.preventDefault();
-
-        const data = {
-            name: registerInput.name,
-            employee_id: registerInput.employee_id,
-            email: registerInput.email,
-            password: registerInput.password,
-        }
-        axios.get('/sanctum/csrf-cookie').then(response => {
-            axios.post(`/api/register_faculty`, data).then(res => {
-                if (res.data.status === 200) {
-                    localStorage.setItem('auth_token', res.data.token);
-                    localStorage.setItem('auth_name', res.data.username);
-                    Swal.fire({
-                        position: 'top-center',
-                        icon: 'success',
-                        title: 'Register Successful',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    history.push('/login');
-                    EmailJS.sendForm(
-                        "service_csfbmua","template_ixxh3xd",form.current,"KA0rISbjAH9nNudt-"
-                    ).then(res=>{
-                        console.log(res);
-                    }).catch(err=>console.log(err));
-                }
-                else {
-                    setRegister({ ...registerInput, error_list: res.data.validation_error });
-                }
+        let confirmPass = handlePassword;
+        if (confirmPassword) {
+            const data = {
+                name: registerInput.name,
+                employee_id: registerInput.employee_id,
+                email: registerInput.email,
+                password: registerInput.password,
+            }
+            axios.get('/sanctum/csrf-cookie').then(response => {
+                axios.post(`/api/register_faculty`, data).then(res => {
+                    if (res.data.status === 200) {
+                        localStorage.setItem('auth_token', res.data.token);
+                        localStorage.setItem('auth_name', res.data.username);
+                        Swal.fire({
+                            position: 'top-center',
+                            icon: 'success',
+                            title: 'Register Successful',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        history.push('/login');
+                        // EmailJS.sendForm(
+                        //     "service_csfbmua", "template_ixxh3xd", form.current, "KA0rISbjAH9nNudt-"
+                        // ).then(res => {
+                        //     console.log(res);
+                        // }).catch(err => console.log(err));
+                    }
+                    else {
+                        setRegister({ ...registerInput, error_list: res.data.validation_error });
+                    }
+                });
             });
-        });
+        }
     }
 
 
@@ -96,6 +111,11 @@ function Register_Faculty() {
                                         <label class="labelers">Password:</label>
                                         <input type="password" name="password" onChange={handleInput} value={registerInput.password} className="form-control" />
                                         <span>{registerInput.error_list.password}</span>
+                                    </div>
+                                    <div className="form-group mb-3">
+                                        <label class="labelers">Confirm Password:</label>
+                                        <input type="password" name="c_password" onChange={handlePassword} value={confirmPassword} className="form-control" />
+                                        <span>{confirmError}</span>
                                     </div>
 
                                     <div className="form-group mb-3">

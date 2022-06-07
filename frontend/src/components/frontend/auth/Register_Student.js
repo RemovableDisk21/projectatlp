@@ -7,6 +7,8 @@ import '../../../static/register.css';
 
 function Register() {
     const history = useHistory();
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [confirmError, setConfirmError] = useState('');
     const [registerInput, setRegister] = useState({
         name: '',
         student_id: '',
@@ -21,34 +23,47 @@ function Register() {
         setRegister({ ...registerInput, [e.target.name]: e.target.value });
     }
 
+    const handlePassword = (e) => {
+        e.preventDefault();
+        if (confirmPassword.confirmPass != registerInput.password) {
+            setConfirmError('Password does not match.');
+            return false;
+        } else {
+            setConfirmError('');
+            return true;
+        }
+    }
+
     const registerSubmit = (e) => {
         e.preventDefault();
-
-        const data = {
-            name: registerInput.name,
-            student_id: registerInput.student_id,
-            email: registerInput.email,
-            password: registerInput.password,
-        }
-        axios.get('/sanctum/csrf-cookie').then(response => {
-            axios.post(`/api/register`, data).then(res => {
-                if (res.data.status === 200) {
-                    localStorage.setItem('auth_token', res.data.token);
-                    localStorage.setItem('auth_name', res.data.username);
-                    Swal.fire({
-                        position: 'top-center',
-                        icon: 'success',
-                        title: 'Register Successful',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    history.push('/login');
-                }
-                else {
-                    setRegister({ ...registerInput, error_list: res.data.validation_error });
-                }
+        let confirmPass = handlePassword;
+        if (confirmPass) {
+            const data = {
+                name: registerInput.name,
+                student_id: registerInput.student_id,
+                email: registerInput.email,
+                password: registerInput.password,
+            }
+            axios.get('/sanctum/csrf-cookie').then(response => {
+                axios.post(`/api/register`, data).then(res => {
+                    if (res.data.status === 200) {
+                        localStorage.setItem('auth_token', res.data.token);
+                        localStorage.setItem('auth_name', res.data.username);
+                        Swal.fire({
+                            position: 'top-center',
+                            icon: 'success',
+                            title: 'Register Successful',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        history.push('/login');
+                    }
+                    else {
+                        setRegister({ ...registerInput, error_list: res.data.validation_error });
+                    }
+                });
             });
-        });
+        }
     }
 
 
@@ -88,8 +103,11 @@ function Register() {
                                         <input type="password" name="password" onChange={handleInput} value={registerInput.password} className="form-control" />
                                         <span>{registerInput.error_list.password}</span>
                                     </div>
-
-
+                                    <div className="form-group mb-3">
+                                        <label class="labelers">Password:</label>
+                                        <input type="password" name="c_password" onChange={handlePassword} value={confirmPassword} className="form-control" />
+                                        <span>{confirmError}</span>
+                                    </div>
                                     <div className="form-group mb-3">
                                         <button type="submit" className="btn btn-primary">Register</button>
                                     </div>
