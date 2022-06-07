@@ -104,7 +104,7 @@ function Register() {
                                         <span>{registerInput.error_list.password}</span>
                                     </div>
                                     <div className="form-group mb-3">
-                                        <label class="labelers">Password:</label>
+                                        <label class="labelers">Confirm Password:</label>
                                         <input type="password" name="c_password" onChange={handlePassword} value={confirmPassword} className="form-control" />
                                         <span>{confirmError}</span>
                                     </div>
