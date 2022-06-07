@@ -23,8 +23,8 @@ function Register_Faculty() {
     const handlePassword = (e) => {
         e.preventDefault();
         setConfirmPassword(e.target.value);
-        if (confirmPassword != registerInput.password) {
-            setConfirmError('Password does not match.');
+        if (registerInput.password !== confirmPassword) {
+            setConfirmError("Password does not match.");
             return false;
         } else {
             setConfirmError('');
@@ -115,7 +115,7 @@ function Register_Faculty() {
                                     </div>
                                     <div className="form-group mb-3">
                                         <label class="labelers">Confirm Password:</label>
-                                        <input type="password" name="c_password" onChange={handlePassword} value={confirmPassword} className="form-control" />
+                                        <input type="password" name="c_password" onChange={(e) => handlePassword(e)} value={confirmPassword} className="form-control" />
                                         <span>{confirmError}</span>
                                     </div>
 
