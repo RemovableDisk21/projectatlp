@@ -1,10 +1,10 @@
-
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import Navbar from "../../../layouts/frontend/Navbar";
 import '../../../static/register.css';
+
 function Register() {
     const history = useHistory();
     const [registerInput, setRegister] = useState({

@@ -104,7 +104,6 @@ function Login() {
                                     <div className="form-group mb-3">
                                         <button type="submit" className="btn btn-primary">Login</button>
                                     </div>
-                                    <Link className="nav-link admin" to="/login_admin">Login as Administrator</Link>
                                 </form>
                             </div>
                         </div>

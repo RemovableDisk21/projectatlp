@@ -6,7 +6,7 @@ import Navbar from "../../../layouts/frontend/Navbar";
 import '../../../static/register.css';
 import EmailJS from "emailjs-com";
 
-function Registers() {
+function Register_Faculty() {
     const history = useHistory();
     const form = useRef();
     const [registerInput, setRegister] = useState({
@@ -115,4 +115,4 @@ function Registers() {
     )
 }
 
-export default Registers;
+export default Register_Faculty;
