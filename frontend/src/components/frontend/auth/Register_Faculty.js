@@ -21,9 +21,9 @@ function Register_Faculty() {
 
 
     const handlePassword = (e) => {
-        e.preventDefault();
-        setConfirmPassword(e.target.value);
-        if (registerInput.password !== confirmPassword) {
+        const confirmPass = e.target.value;
+        setConfirmPassword(confirmPass);
+        if (registerInput.password != confirmPass) {
             setConfirmError("Password does not match.");
             return false;
         } else {
